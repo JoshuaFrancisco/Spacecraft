@@ -134,6 +134,19 @@ GLint _glScene::drawScene()
                 glScalef(2,2,1); //scale image
                 mnu->drawMenu(screenWidth, screenHeight); //draw main menu
             glPopMatrix();
+
+            //Resets enemies for New game
+             for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+            {
+            enms[i].initEnemy(enmsTex->tex);
+            enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
+            //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+            enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+            enms[i].xSize = enms[i].ySize = 0.1;
+
+            if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
+            enms[i].yMove = -0.0005;
+            }
         break;
         }
 
@@ -212,17 +225,22 @@ GLint _glScene::drawScene()
         }*/
         for (int j = 0; j < ply->bullets.size();j++)
         {
-            if(ply->bullets.at(j)->xPos == enms[i].xPos)
+            if((ply->bullets.at(j)->xPos == enms[i].xPos) || (ply->bullets.at(j)->yPos == enms[i].yPos))
             {
-                if(hit->isRadialCollision(ply->bullets.at(j)->xPos, ply->bullets.at(j)->yPos, enms[i].xPos,enms[i].yPos,0.1,0.12)) {
-                    //enms[i].action = 4; //enemy dies
+                //cout << "BULLET POS X: " << ply->bullets.at(j)->xPos << endl;
+                //cout << "ENEMY POS X:" << enms[i].xPos << endl;
+                if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) || (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
+                    {
                     cout << "enemy died" << endl;
+                    //delete ply->bullets.at(j);
+                    //ply->bullets.erase(ply->bullets.begin()+j);
                     }
-                }
-        }
+            }
         enms[i].actions();
 
-            } // end of for loop
+        }
+
+            }
         }
     }
 }
