@@ -19,7 +19,7 @@ CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a
 !['Step 1'](https://cdn.discordapp.com/attachments/185652814645690368/704954209707098183/step1.png)
 
 
-Set the relative path for your common folder which should include dependency files such as irrKlang.a, SOIL, and GLUT
+#### Set the relative path for your common folder which should include dependency files such as irrKlang.a, SOIL, and GLUT
 
 !['Step 1.1'](https://cdn.discordapp.com/attachments/185652814645690368/704954988102811728/step_1.1.png)
 
