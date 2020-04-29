@@ -5,12 +5,12 @@ Game Development Project made with OpenGL and C++
 
 ### Description:
 
-A top-down isometric space shooter where a player must defend his position before a swarm of enemies overwhelm's him
+A top-down isometric space shooter where a player must defend his position from a swarm of alien enemies, if these alien enemies can make it past to the bottom of the screen then GAME OVER.
 
 ### Running Environment:
 CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a 
 
-#### NOTE: spacecraft.layout file is missing you can find that in the discord
+#### NOTE: spacecraft.layout file is missing you can find that in the discord, and common folder not provided they can be found in the discord
 
 ### How to Run it:
 
