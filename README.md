@@ -40,7 +40,10 @@ Set the relative path for your common folder which should include dependency fil
 
 !['Step 5'](https://cdn.discordapp.com/attachments/185652814645690368/704959704899518494/step5.png)
 
-#### 6.) Go to Project -> Properties -> linker settings-> add libSOIL.a found in common/lib and put on the top of all the other files-> next add libirrKlang.a in common/lib and leave as is. After this you can build and run and the game should work
+#### 6.) Go to Project -> Properties -> linker settings-> add libSOIL.a found in common/lib and put on the top of all the other files-> next add libirrKlang.a in common/lib and leave as is.
 
 !['Step 6'](https://cdn.discordapp.com/attachments/185652814645690368/704960592401661992/step6.png)
 
+After you've done all this Build and Run and the game should work!
+
+!['Game'](https://cdn.discordapp.com/attachments/185652814645690368/704963250172723271/final.png)
