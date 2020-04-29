@@ -149,10 +149,14 @@ void _player::shoot(){
   bullet->xPos = xPos + 0.0;
   bullet->yPos = yPos + 2.35;
   bullet->maxDistance = 300; // How far the bullet travels before disapear
-  if (direction == "right") bullet->xMove = 0.01;
-  else if (direction == "left") bullet->xMove = -0.01;
-  else if (direction == "up") bullet->yMove = 0.01;
-  else if (direction == "down") bullet->yMove = -0.01;
+  //if (direction == "right") bullet->xMove = 0.01;
+  //else if (direction == "left") bullet->xMove = -0.01;
+  //else if (direction == "up") bullet->yMove = 0.003;
+  //else if (direction == "down") bullet->yMove = -0.01;
+  if (direction == "right") bullet->xMove = bullet->speed;
+  else if (direction == "left") bullet->xMove -= bullet->speed;
+  else if (direction == "up") bullet->yMove = bullet->speed;
+  else if (direction == "down") bullet->yMove -= bullet->speed;
   bullet->init("images/PlayerProjectile.png");
   bullets.push_back(bullet);
 }

@@ -93,7 +93,7 @@ void _inputs::keyPressed(_sound* snd)
      switch(wParam)
     {
         case VK_SPACE:
-             snd->playSound("sounds/p.mp3");
+             snd->playSound("sounds/pew.mp3");
              break;
         /*case VK_DOWN:
              snd->playSound("sounds/p.mp3");

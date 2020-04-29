@@ -23,9 +23,10 @@ _sound *snds = new _sound();
 menu *mnu = new menu();
 menu *splash = new menu();
 menu *hlp = new menu();
+menu *over = new menu();
 
 _textureLoader *enmsTex = new _textureLoader();
-_enms enms[20];
+_enms enms[10];
 
 _glScene::_glScene()
 {
@@ -60,10 +61,10 @@ GLint _glScene::initGL()
    //ply->zPos = -2.0; //change z position, changes the size of player
   //glEnable(GL_COLOR_MATERIAL);
 
-  for(int i=0; i<20; i++)
+  for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
   {
       enms[i].initEnemy(enmsTex->tex);
-      enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,1.0,-2.5);
+      enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
       //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
       enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
       enms[i].xSize = enms[i].ySize = 0.1;
@@ -122,6 +123,19 @@ GLint _glScene::drawScene()
             glPopMatrix();
         break;
         }
+         //game over
+        case isOver:
+        {
+            over->menuInit("images/gameover.png");
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+            glLoadIdentity();                                    // Reset The Current Modelview Matrix
+            glPushMatrix();
+                glTranslated(0,0,-4.0); //move image back
+                glScalef(2,2,1); //scale image
+                mnu->drawMenu(screenWidth, screenHeight); //draw main menu
+            glPopMatrix();
+        break;
+        }
 
     case isPlay:
     {
@@ -155,14 +169,14 @@ GLint _glScene::drawScene()
     glPopMatrix();
 
     //Handles Enemy
-    for (int i = 0; i <20; i++) {
+    for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++) {
         if(enms[i].xPos<-2.0)
         {
             enms[i].action =0;
             //enms[i].xMove =0.01;
             enms[i].xMove *= -1;
             enms[i].rotateZ = 0;
-            enms[i].yPos =-0.2;
+            //enms[i].yPos =-0.2;
         }
         else if (enms[i].xPos >2.0)
         {
@@ -170,7 +184,7 @@ GLint _glScene::drawScene()
             //enms[i].xMove = -0.01;
             enms[i].xMove *= -1;
             enms[i].rotateZ = 0;
-            enms[i].yPos =-0.2;
+            //enms[i].yPos =-0.2;
         }
         enms[i].xPos += enms[i].xMove;
         enms[i].yPos += enms[i].yMove;
@@ -178,6 +192,7 @@ GLint _glScene::drawScene()
         //Game over check, prints in console, resets y position
         if(enms[i].yPos <= -.70){
             cout << "Game Over!" << endl;
+            state = isOver;
             enms[i].yPos = 1.0;
         }
 

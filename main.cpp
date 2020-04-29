@@ -337,7 +337,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 	}
 
 	// Create Our OpenGL Window
-	if (!CreateGLWindow("Game Engine Lesson 01",fullscreenWidth,fullscreenHeight,256,fullscreen))
+	if (!CreateGLWindow("Spacecraft",fullscreenWidth,fullscreenHeight,256,fullscreen))
 	{
 		return 0;									// Quit If Window Was Not Created
 	}
@@ -413,7 +413,8 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			}
 			else									// Not Time To Quit, Update Screen
 			{
-			    if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
+			    //if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
+                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver)){ //press ENTER on splash or help to go to menu
                     keys[VK_RETURN]=FALSE;
                     Scene->state = Scene->isMenu; //go to main menu
 			    }

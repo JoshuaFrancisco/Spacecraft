@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1588135733 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\main.cpp
+1588143490 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<stdlib.h>
 	<iostream>
 	<windows.h>
 
-1588131981 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_glscene.h
+1588143433 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -50,7 +50,7 @@
 1580957622 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_gllight.h
 	<_glScene.h>
 
-1588140435 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_glscene.cpp
+1588144091 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -89,7 +89,7 @@
 	<projectiles.h>
 	<vector>
 
-1588126617 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\projectiles.h
+1588144368 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\projectiles.h
 	<iostream>
 	<GL/gl.h>
 	<_textureLoader.h>
@@ -202,7 +202,7 @@
 	<gl/gl.h>
 	<windows.h>
 
-1588140193 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_inputs.cpp
+1588142391 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_inputs.cpp
 	"_inputs.h"
 
 1588063434 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_model.cpp
@@ -212,7 +212,7 @@
 1586566378 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_parallax.cpp
 	"_parallax.h"
 
-1588140374 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_player.cpp
+1588144199 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_player.cpp
 	"_player.h"
 
 1588056677 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_sound.cpp
@@ -228,6 +228,6 @@
 	"menu.h"
 	<_textureLoader.h>
 
-1588137805 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\projectiles.cpp
+1588144292 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\projectiles.cpp
 	"projectiles.h"
 
