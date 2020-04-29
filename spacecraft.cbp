@@ -14,6 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -35,14 +37,42 @@
 			<Add directory="C:/Users/JoshF/Desktop/spacecraft-git/common/include" />
 		</Compiler>
 		<Linker>
+			<Add library="../common/lib/libSOIL.a" />
 			<Add library="glut32" />
 			<Add library="opengl32" />
 			<Add library="glu32" />
 			<Add library="winmm" />
 			<Add library="gdi32" />
+			<Add library="../common/lib/libirrKlang.a" />
 			<Add directory="C:/Users/JoshF/Desktop/spacecraft-git/common/lib" />
 		</Linker>
+		<Unit filename="include/_Model.h" />
+		<Unit filename="include/_checkCollision.h" />
+		<Unit filename="include/_enms.h" />
+		<Unit filename="include/_glLight.h" />
+		<Unit filename="include/_glScene.h" />
+		<Unit filename="include/_inputs.h" />
+		<Unit filename="include/_parallax.h" />
+		<Unit filename="include/_player.h" />
+		<Unit filename="include/_sound.h" />
+		<Unit filename="include/_textureLoader.h" />
+		<Unit filename="include/_timer.h" />
+		<Unit filename="include/menu.h" />
+		<Unit filename="include/projectiles.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/_Model.cpp" />
+		<Unit filename="src/_checkCollision.cpp" />
+		<Unit filename="src/_enms.cpp" />
+		<Unit filename="src/_glLight.cpp" />
+		<Unit filename="src/_glScene.cpp" />
+		<Unit filename="src/_inputs.cpp" />
+		<Unit filename="src/_parallax.cpp" />
+		<Unit filename="src/_player.cpp" />
+		<Unit filename="src/_sound.cpp" />
+		<Unit filename="src/_textureLoader.cpp" />
+		<Unit filename="src/_timer.cpp" />
+		<Unit filename="src/menu.cpp" />
+		<Unit filename="src/projectiles.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -3,6 +3,8 @@
 _textureLoader *T= new _textureLoader();
 _timer *tmr = new _timer();
 
+_projectile *bullet = new _projectile();
+
 
 _player::_player()
 {
@@ -84,15 +86,15 @@ void _player::initPlayer(char *fileName)
 
 void _player::actions()
 {
-
+/*
     switch(action)
     {
 
         case 0: //left arrow
                 if(tmr->getTicks()>60)
                 {
-                xMin+=1.0/frames*-1;
-                xMax+=1.0/frames*-1;
+                //xMin+=1.0/frames*-1;
+                //xMax+=1.0/frames*-1;
                 yMax=0.333;
                 xMax=-1.0;
                 if(xMax>=1){xMin=0.0; xMax=1/frames;}
@@ -105,8 +107,8 @@ void _player::actions()
             if(tmr->getTicks()>60)
                 {
                 //xMin+=1.0/frames;
-                xMin+=1.0/frames;
-                xMax+=1.0/frames;
+                //xMin+=1.0/frames;
+                //xMax+=1.0/frames;
                 yMax=0.333;
                 xMax=-1.0;
                 if(xMax>=1){xMin=1.0/frames; xMax=0.0/frames;}
@@ -116,7 +118,7 @@ void _player::actions()
             break;
 
         case 3:
-            frames =1;
+            frames =0.5;
             xMin=1;
             yMin=-0.5;
             yMax=0.333;
@@ -125,6 +127,7 @@ void _player::actions()
 
 
     }
+    */
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {
@@ -141,16 +144,19 @@ void _player::actions()
 }
 
 void _player::shoot(){
-  _projectile *bullet = new _projectile();
   bullet->xSize = bullet->ySize = 0.20;
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = xPos + 0.0;
   bullet->yPos = yPos + 2.35;
   bullet->maxDistance = 300; // How far the bullet travels before disapear
-  if (direction == "right") bullet->xMove = 0.01;
-  else if (direction == "left") bullet->xMove = -0.01;
-  else if (direction == "up") bullet->yMove = 0.01;
-  else if (direction == "down") bullet->yMove = -0.01;
+  //if (direction == "right") bullet->xMove = 0.01;
+  //else if (direction == "left") bullet->xMove = -0.01;
+  //else if (direction == "up") bullet->yMove = 0.003;
+  //else if (direction == "down") bullet->yMove = -0.01;
+  if (direction == "right") bullet->xMove = bullet->speed;
+  else if (direction == "left") bullet->xMove -= bullet->speed;
+  else if (direction == "up") bullet->yMove = bullet->speed;
+  else if (direction == "down") bullet->yMove -= bullet->speed;
   bullet->init("images/PlayerProjectile.png");
   bullets.push_back(bullet);
 }

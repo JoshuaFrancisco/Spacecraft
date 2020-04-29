@@ -61,21 +61,25 @@ void _inputs::keyPressed(_player* ply)
 {
         switch(wParam)
     {
-        case VK_LEFT:
+       case VK_LEFT:
             ply->action=0;
             //ply->distTraveled -= 1;
-            ply->direction = "left";
+            //ply->direction = "left";
+            ply->xPos-=.05;
             break;
         case VK_RIGHT:
             //ply->distTraveled += 1;
             ply->action=1;
-            ply->direction = "right";
+            //ply->direction = "right";
+            ply->xPos+=.05;
              break;
         case VK_DOWN:
-            ply->direction = "down";
+            //ply->direction = "down";
+            ply->yPos-=.05;
             break;
         case VK_UP:
-            ply->direction = "up";
+            //ply->direction = "up";
+            ply->yPos+=.05;
             break;
         case VK_SPACE:
             //shoot
@@ -88,12 +92,13 @@ void _inputs::keyPressed(_sound* snd)
 {
      switch(wParam)
     {
-        case VK_LEFT:
+        case VK_SPACE:
+             snd->playSound("sounds/pew.mp3");
+             break;
+        /*case VK_DOWN:
              snd->playSound("sounds/p.mp3");
              break;
-        case VK_RIGHT:
-            snd->playSound("sounds/p.mp3");
-             break;
+    */
     }
 }
 
@@ -129,7 +134,7 @@ void _inputs::mouseEventDown(_Model* Mdl, double x, double y)
 
         case MK_LBUTTON:
             Mouse_Rotate=true;
-           // Mouse_Translate=false;
+           //Mouse_Translate=false;
             break;
         case MK_RBUTTON:
             Mouse_Translate=true;

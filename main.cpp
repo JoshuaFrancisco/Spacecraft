@@ -337,7 +337,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 	}
 
 	// Create Our OpenGL Window
-	if (!CreateGLWindow("Game Engine Lesson 01",fullscreenWidth,fullscreenHeight,256,fullscreen))
+	if (!CreateGLWindow("Spacecraft",fullscreenWidth,fullscreenHeight,256,fullscreen))
 	{
 		return 0;									// Quit If Window Was Not Created
 	}
@@ -403,17 +403,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
 			{
 			    //make message window that exits
-			    int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
-			    if (exitMessage == IDOK){
+			    //int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
+			    //if (exitMessage == IDOK){
                     done=TRUE;							// ESC or DrawGLScene Signalled A Quit
-			    }
+			    //}
 			    /*else if (exitMessage == IDCANCEL){
                    break; //BUG: no/cancel remakes window
 			    }*/
 			}
 			else									// Not Time To Quit, Update Screen
 			{
-			    if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
+			    //if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
+                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver)){ //press ENTER on splash or help to go to menu
                     keys[VK_RETURN]=FALSE;
                     Scene->state = Scene->isMenu; //go to main menu
 			    }

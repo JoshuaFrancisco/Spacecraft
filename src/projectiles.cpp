@@ -54,8 +54,8 @@ void _projectile::draw(){
 
 void _projectile::move(){
   distTraveled += (xMove + yMove);
-  xPos += xMove;
-  yPos += yMove;
+  //xPos += speed;
+  yPos += speed;
 }
 
 bool _projectile::expired(){
