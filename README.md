@@ -2,4 +2,6 @@
 
 Team: Snowstorm Entertainment
 
-Game Development Project, uses codeblocks, OpenGL, and C++
+spacecraft.layout file is missing you can find that in the discord 
+
+Game Development Project made with OpenGL and C++
