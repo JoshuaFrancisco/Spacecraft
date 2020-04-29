@@ -8,11 +8,14 @@
 #include <_checkCollision.h>
 #include <_sound.h>
 #include <menu.h>
+#include <iostream>
+
+using namespace std;
 
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
 _parallax *plxSky = new _parallax();
-//_parallax *plxFloor = new _parallax();
+_parallax *plxFloor = new _parallax();
 _player *ply = new _player();
 _checkCollision *hit = new _checkCollision();
 _sound *snds = new _sound();
@@ -50,24 +53,29 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/enemy-03.png");
    plxSky->parallaxInit("images/stage-back.png");
-   //plxFloor->parallaxInit("images/floor.png");
+   //plxFloor->parallaxInit("images/asteroid-01.png");
    ply->initPlayer("images/ship-02.png");
-   ply->yPos = -2.0; //change position
-   ply->zPos = -3.0; //change position, changes the size of player
+   ply->xPos = -0.5; //changes x position
+   ply->yPos = -1.5; //change y position
+   //ply->zPos = -2.0; //change z position, changes the size of player
   //glEnable(GL_COLOR_MATERIAL);
 
   for(int i=0; i<20; i++)
   {
       enms[i].initEnemy(enmsTex->tex);
-      enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+      enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,1.0,-2.5);
+      //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
       enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
-      enms[i].xSize = enms[i].ySize = float(rand()%12)/85.0;
+      enms[i].xSize = enms[i].ySize = 0.1;
+
+      if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
+        enms[i].yMove = -0.0005;
   }
 
     snds->initSounds();
-    snds->playMusic("sounds/mp.mp3");
-
+    snds->playMusic("sounds/background-music.mp3");
    return true;
+
 }
 
 GLint _glScene::drawScene()
@@ -76,11 +84,11 @@ GLint _glScene::drawScene()
 	    //splash screen
         case isSplash:
         {
-            splash->menuInit("images/splash.png"); //load image for splash
+            splash->menuInit("images/splash.png"); //load image for splash, 1920 x 1080 image
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
             glLoadIdentity();									// Reset The Current Modelview Matrix
             glPushMatrix();
-                glTranslated(0,0,-4.0); //move image back
+                glTranslated(0,0,-4.5); //move image back
                 glScalef(2,2,1); //scale image
                 splash->drawMenu(screenWidth, screenHeight); //draw splash
             glPopMatrix();
@@ -90,7 +98,7 @@ GLint _glScene::drawScene()
 	    //main menu
         case isMenu:
         {
-            mnu->menuInit("images/menu.png"); //load image for menu
+            mnu->menuInit("images/menu.png"); //load image for menu, 1920 x 1080 image
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
             glLoadIdentity();									// Reset The Current Modelview Matrix
             glPushMatrix();
@@ -130,7 +138,7 @@ GLint _glScene::drawScene()
      plxSky->scroll(true,"up",0.0005);            // Automatic background movement
 
      //plxFloor->drawSquare(screenWidth,screenHeight); // draw floor background
-     //plxFloor->scroll(false,"right",0.0005);            // Automatic background movement
+     //plxFloor->scroll(true,"down",0.0005);            // Automatic background movement
     glPopMatrix();
 
 
@@ -150,34 +158,55 @@ GLint _glScene::drawScene()
     for (int i = 0; i <20; i++) {
         if(enms[i].xPos<-2.0)
         {
-                enms[i].action =0;
-                enms[i].xMove =0.01;
-                enms[i].rotateZ = 0;
-                enms[i].yPos =-0.2;
+            enms[i].action =0;
+            //enms[i].xMove =0.01;
+            enms[i].xMove *= -1;
+            enms[i].rotateZ = 0;
+            enms[i].yPos =-0.2;
         }
         else if (enms[i].xPos >2.0)
         {
             enms[i].action = 1;
-            enms[i].xMove = -0.01;
+            //enms[i].xMove = -0.01;
+            enms[i].xMove *= -1;
             enms[i].rotateZ = 0;
             enms[i].yPos =-0.2;
         }
         enms[i].xPos += enms[i].xMove;
+        enms[i].yPos += enms[i].yMove;
 
-        if(ply->action == 0 && ply-> xPos > enms[i].xPos)
+        //Game over check, prints in console, resets y position
+        if(enms[i].yPos <= -.70){
+            cout << "Game Over!" << endl;
+            enms[i].yPos = 1.0;
+        }
+
+        //Handles Collision
+        /*if(ply->action == 0 && ply-> xPos > enms[i].xPos)
         {
-            if(hit->isLinearCollision(ply->xPos,enms[i].xPos))
-            //if(hit->isRadialCollision(ply->xPos,ply->yPos,enms[i].xPos,enms[i].yPos,0.1,0.12))
+            //if(hit->isLinearCollision(ply->xPos,enms[i].xPos))
+            if(hit->isRadialCollision(ply->xPos,ply->yPos,enms[i].xPos,enms[i].yPos,0.1,0.12))
                 enms[i].action = 2;
         }
 
         if(ply->action == 1 && ply-> xPos < enms[i].xPos)
         {
-            if(hit->isLinearCollision(ply->xPos,enms[i].xPos))
-            //if(hit->isRadialCollision(ply->xPos,ply->yPos,enms[i].xPos,enms[i].yPos,0.1,0.12))
+            //if(hit->isLinearCollision(ply->xPos,enms[i].xPos))
+            if(hit->isRadialCollision(ply->xPos,ply->yPos,enms[i].xPos,enms[i].yPos,0.1,0.12))
                 enms[i].action = 3;
+        }*/
+        for (int j = 0; j < ply->bullets.size();j++)
+        {
+            if(ply->bullets.at(j)->xPos == enms[i].xPos)
+            {
+                if(hit->isRadialCollision(ply->bullets.at(j)->xPos, ply->bullets.at(j)->yPos, enms[i].xPos,enms[i].yPos,0.1,0.12)) {
+                    //enms[i].action = 4; //enemy dies
+                    cout << "enemy died" << endl;
+                    }
+                }
         }
         enms[i].actions();
+
             } // end of for loop
         }
     }

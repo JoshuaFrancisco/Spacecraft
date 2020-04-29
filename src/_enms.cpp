@@ -71,6 +71,8 @@ void _enms::initEnemy(GLuint tex)
 
 void _enms::actions()
 {
+    drawEnemy();
+    /*
     switch(action) {
     case 0:
         if (TE->getTicks()>60) {
@@ -98,7 +100,7 @@ void _enms::actions()
         }
         drawEnemy();
         break;
-/*
+
     //when the player attacks left enemies launch and rotate
     case 2:
 
@@ -122,8 +124,8 @@ void _enms::actions()
         drawEnemy();
 
         break;
-*/
-/*
+
+
     case 3:
 
         if (TE->getTicks()>60) {
@@ -138,6 +140,7 @@ void _enms::actions()
         }
         drawEnemy();
         break;
-*/
+
     }
+    */
 }

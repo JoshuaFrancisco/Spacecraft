@@ -29,7 +29,7 @@ class _enms
         float rotateX, rotateY, rotateZ; //rotations
 
         int frames; //number of frames
-        float xMove; //moving speed on x axis
+        float xMove, yMove; //moving speed on x axis
         int action;  //to make an action for an enemy
         _timer *TE = new _timer();
 

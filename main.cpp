@@ -403,10 +403,10 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
 			{
 			    //make message window that exits
-			    int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
-			    if (exitMessage == IDOK){
+			    //int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
+			    //if (exitMessage == IDOK){
                     done=TRUE;							// ESC or DrawGLScene Signalled A Quit
-			    }
+			    //}
 			    /*else if (exitMessage == IDCANCEL){
                    break; //BUG: no/cancel remakes window
 			    }*/

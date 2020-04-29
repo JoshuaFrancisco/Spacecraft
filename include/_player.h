@@ -37,7 +37,7 @@ class _player
         float runSpeed;
         float jumpSpeed;
 
-        string direction;
+        string direction = "up";
         vector<_projectile*> bullets;
 
         void drawPlayer();
