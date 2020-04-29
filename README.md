@@ -23,7 +23,7 @@ CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a
 
 !['Step 1.1'](https://cdn.discordapp.com/attachments/185652814645690368/704954988102811728/step_1.1.png)
 
-#### 2.) Create a new Class naming it whatever in this instance I am creating a _projectiles which will create a .ccp and .h file in a src and include folder 
+#### 2.) Create a new class naming it whatever in this instance I am creating a projectiles class which will create a .cpp and .h file in a src and include folder which we can be seen on the left where the project Manager is 
 
 !['Step 2'](https://cdn.discordapp.com/attachments/185652814645690368/704956241083891752/step2.png)
 
