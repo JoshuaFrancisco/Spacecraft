@@ -24,6 +24,7 @@ menu *mnu = new menu();
 menu *splash = new menu();
 menu *hlp = new menu();
 menu *over = new menu();
+menu *cred = new menu();
 
 _textureLoader *enmsTex = new _textureLoader();
 _enms enms[10];
@@ -120,6 +121,19 @@ GLint _glScene::drawScene()
                 glTranslated(0,0,-4.0); //move image back
                 glScalef(2,2,1); //scale image
                 hlp->drawMenu(screenWidth, screenHeight); //draw help
+            glPopMatrix();
+        break;
+        }
+                //credits menu
+        case isCredits:
+        {
+            cred->menuInit("images/credits.png"); //load image for credits
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+            glLoadIdentity();                                    // Reset The Current Modelview Matrix
+            glPushMatrix();
+                glTranslated(0,0,-4.0); //move image back
+                glScalef(2,2,1); //scale image
+                cred->drawMenu(screenWidth, screenHeight); //draw credits
             glPopMatrix();
         break;
         }

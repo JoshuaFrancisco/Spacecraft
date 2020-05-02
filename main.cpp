@@ -414,10 +414,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			else									// Not Time To Quit, Update Screen
 			{
 			    //if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
-                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver)){ //press ENTER on splash or help to go to menu
+                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver || Scene->state == Scene->isCredits)){ //press ENTER on splash or help to go to menu
                     keys[VK_RETURN]=FALSE;
                     Scene->state = Scene->isMenu; //go to main menu
 			    }
+
 			    if(keys[0x4E] && Scene->state == Scene->isMenu){ //press N and in menu
                     keys[0x4E]=FALSE;
                     Scene->state = Scene->isPlay; //go to play game
@@ -429,6 +430,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
                 if(keys[0x45] && Scene->state == Scene->isMenu) { //press E and in menu
                     keys[0x45]=FALSE;
                     break; //go to exit
+                }
+                if(keys[0x43] && Scene->state == Scene->isMenu) { //press C and in menu
+                    keys[0x43]=FALSE;
+                    Scene->state = Scene->isCredits;
+                    //break; //go to exit
                 }
 			    Scene->drawScene();
 				SwapBuffers(hDC);					// Swap Buffers (Double Buffering)

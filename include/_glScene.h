@@ -19,7 +19,7 @@ class _glScene
 
         //game states identify which screen the game is in
         //enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3};
-        enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3, isOver = 4};
+        enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3, isOver = 4, isCredits = 5};
         gameState state = isSplash; //initialize state to splash
 
         int winMsg(HWND, UINT, WPARAM, LPARAM);	// Callback of inputs
