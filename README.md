@@ -10,8 +10,6 @@ A top-down isometric space shooter where a player must defend his position befor
 ### Running Environment:
 CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a 
 
-#### NOTE: spacecraft.layout file is missing you can find that in the discord
-
 ### How to Run it:
 
 #### 1.) First Create a new Glut Project
