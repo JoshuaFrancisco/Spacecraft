@@ -19,7 +19,7 @@ _enms::_enms()
     yMax=1.0;
     action =0;
 
-    xMove= 0.01;
+    xMove= 0.005;
 
     theta =30*(PI/180);
     v=35;
@@ -62,6 +62,15 @@ void _enms::placeEnemy(float x, float y , float z)
         yPos = y;
         zPos = z;
 }
+
+void _enms::placeRandomly()
+{
+    //xPos = rand()/float(RAND_MAX)*5-2.5;
+    xPos = rand()%25 * .1;
+    yPos = (rand()%25 * .1)+1.5;
+    zPos = -2.5;
+}
+
 
 void _enms::initEnemy(GLuint tex)
 {

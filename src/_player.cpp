@@ -3,8 +3,6 @@
 _textureLoader *T= new _textureLoader();
 _timer *tmr = new _timer();
 
-_projectile *bullet = new _projectile();
-
 
 _player::_player()
 {
@@ -144,6 +142,7 @@ void _player::actions()
 }
 
 void _player::shoot(){
+  _projectile *bullet = new _projectile();
   bullet->xSize = bullet->ySize = 0.20;
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = xPos + 0.0;

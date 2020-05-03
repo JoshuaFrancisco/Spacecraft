@@ -16,7 +16,7 @@ class _projectile
     public:
         _projectile();
         virtual ~_projectile();
-        const float speed = 0.003;
+        float speed = 0.003;
 
         float scale[3]={1.0,1.0,1.0};
         avec3 verticies[4];

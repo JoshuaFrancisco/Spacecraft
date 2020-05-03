@@ -84,6 +84,8 @@ void _inputs::keyPressed(_player* ply)
         case VK_SPACE:
             //shoot
             ply->shoot();
+        case VK_RETURN:
+            break;
     }
 }
 

@@ -370,18 +370,18 @@
 	<GL/glut.h>
 	<iostream>
 
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_checkcollision.cpp
+1588477212 source:c:\users\jesc3\documents\github\spacecraft\src\_checkcollision.cpp
 	"_checkCollision.h"
 	<math.h>
 
 1588133588 c:\users\jesc3\documents\github\spacecraft\include\_checkcollision.h
 
-1588140867 source:c:\users\jesc3\documents\github\spacecraft\src\_enms.cpp
+1588476203 source:c:\users\jesc3\documents\github\spacecraft\src\_enms.cpp
 	"_enms.h"
 	<math.h>
 	<cstdlib>
 
-1588140867 c:\users\jesc3\documents\github\spacecraft\include\_enms.h
+1588475402 c:\users\jesc3\documents\github\spacecraft\include\_enms.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
@@ -401,7 +401,7 @@
 1588135899 c:\users\jesc3\documents\github\spacecraft\include\_gllight.h
 	<_glScene.h>
 
-1588387184 source:c:\users\jesc3\documents\github\spacecraft\src\_glscene.cpp
+1588476817 source:c:\users\jesc3\documents\github\spacecraft\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -440,7 +440,7 @@
 	<projectiles.h>
 	<vector>
 
-1588380025 c:\users\jesc3\documents\github\spacecraft\include\projectiles.h
+1588468743 c:\users\jesc3\documents\github\spacecraft\include\projectiles.h
 	<iostream>
 	<GL/gl.h>
 	<_textureLoader.h>
@@ -456,7 +456,7 @@
 	<gl/gl.h>
 	<windows.h>
 
-1588380025 source:c:\users\jesc3\documents\github\spacecraft\src\_inputs.cpp
+1588477402 source:c:\users\jesc3\documents\github\spacecraft\src\_inputs.cpp
 	"_inputs.h"
 
 1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_model.cpp
@@ -466,7 +466,7 @@
 1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_parallax.cpp
 	"_parallax.h"
 
-1588380025 source:c:\users\jesc3\documents\github\spacecraft\src\_player.cpp
+1588469024 source:c:\users\jesc3\documents\github\spacecraft\src\_player.cpp
 	"_player.h"
 
 1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_sound.cpp
