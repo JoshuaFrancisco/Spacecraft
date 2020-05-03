@@ -196,13 +196,13 @@ GLint _glScene::drawScene()
 
       //Handles Enemy
       for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++) {
-        if(enms[i].xPos<-1.75)
+        if(enms[i].xPos<=-1.75)
         {
           enms[i].action =0;
           enms[i].xMove *= -1;
           enms[i].rotateZ = 0;
         }
-        else if (enms[i].xPos>1.75)
+        else if (enms[i].xPos>=1.75)
         {
           enms[i].action = 1;
           enms[i].xMove *= -1;
@@ -211,7 +211,8 @@ GLint _glScene::drawScene()
         enms[i].yPos += enms[i].yMove;
 
         //Game over check, prints in console, resets y position
-        if(enms[i].yPos <= -.70){
+        if(enms[i].yPos <= -.70 && enms[i].xPos>=-1.75 && enms[i].xPos<=1.75) {
+          /* code */
           cout << "Game Over!" << endl;
           state = isOver;
           enms[i].yPos = 1.0;
