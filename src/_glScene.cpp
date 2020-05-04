@@ -1,41 +1,16 @@
 #include "_glScene.h"
 #include <_glLight.h>
-#include <_Model.h>
-#include <_inputs.h>
-#include <_parallax.h>
-#include <_player.h>
-#include <_enms.h>
-#include <_checkCollision.h>
-#include <_sound.h>
-#include <menu.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-
-using namespace std;
-
-_Model *myModel = new _Model();
-_inputs *kBMs = new _inputs();
-_parallax *plxSky = new _parallax();
-_parallax *plxFloor = new _parallax();
-_player *ply = new _player();
-_checkCollision *hit = new _checkCollision();
-_sound *snds = new _sound();
-
-menu *mnu = new menu();
-menu *splash = new menu();
-menu *hlp = new menu();
-menu *over = new menu();
-menu *cred = new menu();
-
-_textureLoader *enmsTex = new _textureLoader();
-_enms enms[5];
 
 _glScene::_glScene()
 {
   //ctor
   screenWidth = GetSystemMetrics(SM_CXSCREEN);
   screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+  doneLoading = false;
+  level1 = true;
+  level2 = false;
+  level3 = false;
 }
 
 _glScene::~_glScene()
@@ -63,32 +38,93 @@ GLint _glScene::initGL()
 
   _glLight Light(GL_LIGHT0);
 
-  myModel->initModel();
-  enmsTex->loadTexture("images/enemy-01.png");
-  plxSky->parallaxInit("images/stage-back.png");
-  //plxFloor->parallaxInit("images/asteroid-01.png");
-  ply->initPlayer("images/ship-02.png");
-  ply->xPos = -0.5; //changes x position
-  ply->yPos = -1.5; //change y position
-  //ply->zPos = -2.0; //change z position, changes the size of player
-  //glEnable(GL_COLOR_MATERIAL);
+  if (level1)
+    {
+      myModel->initModel();
+      enmsTex->loadTexture("images/enemy-01.png");
+      plxSky->parallaxInit("images/stage-back.png");
+      //plxFloor->parallaxInit("images/asteroid-01.png");
+      ply->initPlayer("images/ship-02.png");
+      ply->xPos = -0.5; //changes x position
+      ply->yPos = -1.5; //change y position
+      //ply->zPos = -2.0; //change z position, changes the size of player
+      //glEnable(GL_COLOR_MATERIAL
+    for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+      {
+        enms[i].initEnemy(enmsTex->tex);
+        enms[i].placeRandomly();
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+        //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+        enms[i].xMove = (rand()%4*.001) + .001;
+        enms[i].xSize = enms[i].ySize = 0.1;
 
-  for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
-  {
-    enms[i].initEnemy(enmsTex->tex);
-    enms[i].placeRandomly();
-    //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
-    //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
-    //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
-    enms[i].xMove = (rand()%4*.001) + .001;
-    enms[i].xSize = enms[i].ySize = 0.1;
+        if (rand()%1 == 1) enms[i].xMove *= -1;
+        enms[i].yMove = -0.0005;
+      }
+    snds->initSounds();
+    snds->engine->stopAllSounds();
+    snds->playMusic("sounds/background-music.mp3");
+    doneLoading = true;
+    }
 
-    if (rand()%1 == 1) enms[i].xMove *= -1;
-    enms[i].yMove = -0.0005;
-  }
+  if (level2)
+    {
+      myModel->initModel();
+      enmsTex->loadTexture("images/enemy-02.png"); //new enemy
+      plxSky->parallaxInit("images/stage-back2.png"); //new background
+      //plxFloor->parallaxInit("images/asteroid-01.png");
+      ply->initPlayer("images/ship-02.png");
+      //ply->zPos = -2.0; //change z position, changes the size of player
+      //glEnable(GL_COLOR_MATERIAL);
 
-  snds->initSounds();
-  snds->playMusic("sounds/background-music.mp3");
+
+    for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+      {
+        enms[i].initEnemy(enmsTex->tex);
+        enms[i].placeRandomly();
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+        //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+        enms[i].xMove = (rand()%4*.001) + .001;
+        enms[i].xSize = enms[i].ySize = 0.1;
+
+        if (rand()%1 == 1) enms[i].xMove *= -1;
+        enms[i].yMove = -0.0005;
+      }
+    snds->engine->stopAllSounds();
+    snds->playMusic("sounds/background-music.mp3");
+    doneLoading = true;
+    }
+
+  if (level3)
+    {
+      myModel->initModel();
+      enmsTex->loadTexture("images/boss-01.png"); //new enemy
+      plxSky->parallaxInit("images/stage-back3.png"); //new background
+      //plxFloor->parallaxInit("images/asteroid-01.png");
+      ply->initPlayer("images/ship-02.png");
+      //ply->zPos = -2.0; //change z position, changes the size of player
+      //glEnable(GL_COLOR_MATERIAL);
+
+        enms[1];
+        for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+          {
+            enms[i].initEnemy(enmsTex->tex);
+            enms[i].placeRandomly();
+            //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
+            //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+            //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+            enms[i].xMove = (rand()%4*.001) + .001;
+            enms[i].xSize = enms[i].ySize = 0.1;
+
+            if (rand()%1 == 1) enms[i].xMove *= -1;
+            enms[i].yMove = -0.0005;
+          }
+    snds->engine->stopAllSounds();
+    snds->playMusic("sounds/boss-music.mp3");
+    doneLoading = true;
+    }
   return true;
 
 }
@@ -175,6 +211,9 @@ GLint _glScene::drawScene()
         if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;
       }
+      level1 = true;
+      level2 = false;
+      level3 = false;
       break;
     }
 
@@ -236,10 +275,11 @@ GLint _glScene::drawScene()
           {
             if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) && (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
             {
-              cout << "enemy died" << endl;
+              //cout << "enemy died" << endl;
               //cout << "Bullet pos: " << ply->bullets.at(j)->xPos << "," << ply->bullets.at(j)->yPos << endl;
               //cout << "Enemy pos: " << enms[i].xPos << "," << enms[i].yPos << endl;
               enms[i].placeRandomly();
+              kills++;
               //score +=10;
               //stringstream sc;
               //sc << score;
@@ -251,9 +291,26 @@ GLint _glScene::drawScene()
             }
           }
           enms[i].actions();
-
         }
-
+        // win and go to next level
+        if (level1 && kills == 5) {
+            level2 = true;
+            level1 = false;
+            doneLoading = false;
+            kills = 0;
+        }
+        if (level2 && kills == 5) {
+            level3 = true;
+            level1 = false;
+            doneLoading = false;
+            kills = 0;
+        }
+        if (level3 && kills == 5) {
+            level3 = false;
+            doneLoading = false;
+            state = isOver;
+            kills = 0;
+        }
       }
     }
   }

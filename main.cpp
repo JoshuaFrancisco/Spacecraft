@@ -330,11 +330,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 	int	fullscreenWidth  = GetSystemMetrics(SM_CXSCREEN);
     int	fullscreenHeight = GetSystemMetrics(SM_CYSCREEN);
 
-	// Ask The User Which Screen Mode They Prefer
-	if (MessageBox(NULL,"Would You Like To Run In Fullscreen Mode?", "Start FullScreen?",MB_YESNO|MB_ICONQUESTION)==IDNO)
-	{
-		fullscreen=FALSE;							// Windowed Mode
-	}
+    fullscreen=FALSE;							// Windowed Mode
 
 	// Create Our OpenGL Window
 	if (!CreateGLWindow("Spacecraft",fullscreenWidth,fullscreenHeight,256,fullscreen))
@@ -385,6 +381,27 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 
 		while(!done)									// Loop That Runs While done=FALSE
 	{
+	    if(!Scene->doneLoading && Scene->level1) {
+            if (!Scene->initGL()) {
+                KillGLWindow();
+                MessageBox(NULL,"Initialization Failed.", "ERROR", MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;
+            }
+        }
+        if(!Scene->doneLoading && Scene->level2) {
+            if (!Scene->initGL()) {
+                KillGLWindow();
+                MessageBox(NULL,"Initialization Failed.", "ERROR", MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;
+            }
+        }
+        if(!Scene->doneLoading && Scene->level3) {
+            if (!Scene->initGL()) {
+                KillGLWindow();
+                MessageBox(NULL,"Initialization Failed.", "ERROR", MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;
+            }
+        }
 		if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))	// Is There A Message Waiting?
 		{
 			if (msg.message==WM_QUIT)				// Have We Received A Quit Message?
@@ -421,6 +438,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 
 			    if(keys[0x4E] && Scene->state == Scene->isMenu){ //press N and in menu
                     keys[0x4E]=FALSE;
+                    Scene->initGL();
                     Scene->state = Scene->isPlay; //go to play game
 			    }
                 if(keys[0x48] && Scene->state == Scene->isMenu){ //press H and in menu
@@ -436,8 +454,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
                     Scene->state = Scene->isCredits;
                     //break; //go to exit
                 }
+                if(Scene->doneLoading)
+			    {
 			    Scene->drawScene();
 				SwapBuffers(hDC);					// Swap Buffers (Double Buffering)
+                }
 			}
 
 			if (keys[VK_F1])						// Is F1 Being Pressed?

@@ -122,6 +122,16 @@ void _inputs::keyPressed(_sound* snd)
         case VK_SPACE:
              snd->playSound("sounds/pew.mp3");
              break;
+        case VK_RETURN:
+        case 0x48: // H for Help
+        case 0x45: // E for Exit Game
+        case 0x43: // C for Credits
+             snd->playSound("sounds/select-sound2.mp3");
+             break;
+        case 0x4E: // N for New Game
+             snd->playSound("sounds/select-sound.mp3");
+             break;
+
     }
 }
 
