@@ -22,7 +22,7 @@ class _projectile
         avec3 verticies[4];
         float xSize, ySize, xPos, yPos, zPos, xMove, yMove;
         float xMax,xMin,yMax,yMin;
-        int distTraveled, maxDistance;
+        float distTraveled, maxDistance;
 
         void init(char *);
         void draw();

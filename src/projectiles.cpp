@@ -54,7 +54,7 @@ void _projectile::draw(){
 }
 
 void _projectile::move(){
-  distTraveled += (xMove + yMove);
+  distTraveled += speed;
   //xPos += speed;
   yPos += speed;
 }

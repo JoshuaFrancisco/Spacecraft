@@ -1,4 +1,7 @@
 #include "_inputs.h"
+#include <iostream>
+
+using namespace std;
 
 _inputs::_inputs()
 {
@@ -70,10 +73,12 @@ void _inputs::keyPressed(_player* ply)
               ply->xPos-=.05;
             }
             */
-            ply->movingLeft = true;
-            ply->movingRight = false;
-            ply->movingUp = false;
-            ply->movingDown = false;
+            if (ply->xPos > -4){
+              ply->action=0;
+              ply->movingLeft = true;
+              ply->movingRight = false;
+            }
+            cout << "keyDown: left" << endl;
             break;
         case VK_RIGHT:
             //ply->distTraveled += 1;
@@ -84,32 +89,41 @@ void _inputs::keyPressed(_player* ply)
               ply->xPos+=.05;
             }
             */
-            ply->movingLeft = false;
-            ply->movingRight = true;
-            ply->movingUp = false;
-            ply->movingDown = false;
+            if (ply->xPos < 3.5){
+              ply->action=1;
+              ply->movingLeft = false;
+              ply->movingRight = true;
+            }
+            cout << "keyDown: right" << endl;
             break;
         case VK_DOWN:
             //ply->direction = "down";
             //if (ply->yPos > -2) ply->yPos-=.05;
-            ply->movingLeft = false;
-            ply->movingRight = false;
-            ply->movingUp = false;
-            ply->movingDown = true;
+            if (ply->yPos > -2.5){
+              ply->movingDown = true;
+              ply->movingUp = false;
+            }
+            cout << "keyDown: down" << endl;
             break;
         case VK_UP:
             //ply->direction = "up";
             //if (ply->yPos < 2) ply->yPos+=.05;
-            ply->movingLeft = false;
-            ply->movingRight = false;
-            ply->movingUp = true;
-            ply->movingDown = false;
+            if (ply->yPos < 1.85){
+              ply->movingDown = false;
+              ply->movingUp = true;
+            }
+            cout << "keyDown: up" << endl;
             break;
         case VK_SPACE:
             //shoot
+            cout << "keyDown: space" << endl;
             ply->shoot();
             break;
         case VK_RETURN:
+            cout << "keyDown: return" << endl;
+            break;
+        default:
+            cout << "keyDown: " << wParam << endl;
             break;
     }
 }
@@ -136,18 +150,21 @@ void _inputs::keyUp(_player* ply)
     {
        case VK_LEFT:
           ply->movingLeft = false;
-            break;
+            cout << "keyUp: left " << wParam << endl;
        case VK_RIGHT:
           ply->movingRight = false;
-            break;
+            cout << "keyUp: right " << wParam << endl;
        case VK_DOWN:
           ply->movingDown = false;
-            break;
+            cout << "keyUp: down " << wParam << endl;
        case VK_UP:
           ply->movingUp = false;
-            break;
+            cout << "keyUp: up " << wParam << endl;
+       case VK_SPACE:
+          cout << "keyUp: space " << wParam << endl;
+        default:
+          cout << "keyUp: " << wParam << endl;
     }
-
 }
 
 

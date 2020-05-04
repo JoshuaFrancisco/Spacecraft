@@ -74,10 +74,22 @@ void _player::initPlayer(char *fileName)
 
 void _player::actions()
 {
-    if(movingLeft) xPos -= xMove;
-    if(movingRight) xPos += xMove;
-    if(movingDown) yPos -= yMove;
-    if(movingUp) yPos += yMove;
+    if(movingLeft) {
+      if (xPos > -4) xPos -= xMove;
+      else movingLeft = false;
+    }
+    if(movingRight) {
+      if (xPos < 3.5) xPos += xMove;
+      else movingRight = false;
+    }
+    if(movingDown) {
+      if (yPos > -2.5) yPos -= yMove;
+      else movingDown = false;
+    }
+    if(movingUp) {
+      if (yPos < 1.85) yPos += yMove;
+      else movingUp = false;
+    }
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {
@@ -85,8 +97,11 @@ void _player::actions()
         bullets.at(i)->draw();
       }
       else {
-        delete bullets.at(i);
+        cout << "Projectile expired!" << endl;
+        _projectile *bullet = bullets.at(i);
         bullets.erase(bullets.begin()+i);
+        delete bullet;
+        i -= 1;
       }
     }
 }
@@ -97,11 +112,7 @@ void _player::shoot(){
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = (xPos*.8) + 0.4;
   bullet->yPos = (yPos*.8) + 0.5;
-  bullet->maxDistance = 300; // How far the bullet travels before disapear
-  //if (direction == "right") bullet->xMove = 0.01;
-  //else if (direction == "left") bullet->xMove = -0.01;
-  //else if (direction == "up") bullet->yMove = 0.003;
-  //else if (direction == "down") bullet->yMove = -0.01;
+  bullet->maxDistance = 5; // How far the bullet travels before disapear
   if (direction == "right") bullet->xMove = bullet->speed;
   else if (direction == "left") bullet->xMove -= bullet->speed;
   else if (direction == "up") bullet->yMove = bullet->speed;

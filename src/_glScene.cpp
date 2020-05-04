@@ -27,7 +27,7 @@ menu *over = new menu();
 menu *cred = new menu();
 
 _textureLoader *enmsTex = new _textureLoader();
-_enms enms[5];
+_enms enms[10];
 
 _glScene::_glScene()
 {
@@ -62,20 +62,7 @@ GLint _glScene::initGL()
   //ply->zPos = -2.0; //change z position, changes the size of player
   //glEnable(GL_COLOR_MATERIAL);
 
-  for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
-  {
-    enms[i].initEnemy(enmsTex->tex);
-    enms[i].placeRandomly();
-    //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
-    //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
-    //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
-    enms[i].xMove = (rand()%4*.001) + .001;
-    enms[i].xSize = enms[i].ySize = 0.1;
-
-    if (rand()%1 == 1) enms[i].xMove *= -1;
-    enms[i].yMove = -0.0005;
-  }
-
+  for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++) enms[i].initEnemy(enmsTex->tex);
   snds->initSounds();
   snds->playMusic("sounds/background-music.mp3");
   return true;
@@ -152,18 +139,7 @@ GLint _glScene::drawScene()
       glPopMatrix();
 
       //Resets enemies for New game
-      for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
-      {
-        enms[i].initEnemy(enmsTex->tex);
-        enms[i].placeRandomly();
-        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
-        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
-        enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
-        enms[i].xSize = enms[i].ySize = 0.1;
-
-        if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
-        enms[i].yMove = -0.0005;
-      }
+      for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++) enms[i].initEnemy(enmsTex->tex);
       break;
     }
 
@@ -171,24 +147,19 @@ GLint _glScene::drawScene()
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
       glLoadIdentity();
-      // glColor3f(1.0,0.0,0.0);              // setting colors
 
       glPushMatrix();
       glTranslated(0,0,-4.0);                    //placing objects
       glScalef(6.3,6.3,1);
       plxSky->drawSquare(screenWidth,screenHeight); // draw sky background
       plxSky->scroll(true,"up",0.0005);            // Automatic background movement
-
-      //plxFloor->drawSquare(screenWidth,screenHeight); // draw floor background
-      //plxFloor->scroll(true,"down",0.0005);            // Automatic background movement
       glPopMatrix();
-
 
       glPushMatrix();                      // grouping starts
       glTranslated(0,0,-8.0);              //placing objects
       myModel->drawModel();
-
       glPopMatrix();                       // grouping ends
+
       glPushMatrix();
       ply->actions();
       ply->drawPlayer();
@@ -210,8 +181,10 @@ GLint _glScene::drawScene()
         enms[i].xPos += enms[i].xMove;
         enms[i].yPos += enms[i].yMove;
 
+        enms[i].actions();
+
         //Game over check, prints in console, resets y position
-        if(enms[i].yPos <= -.70 && enms[i].xPos>=-1.75 && enms[i].xPos<=1.75) {
+        if(enms[i].yPos <= -1.5 && enms[i].xPos>=-1.75 && enms[i].xPos<=1.75) {
           /* code */
           cout << "Game Over!" << endl;
           state = isOver;
@@ -225,16 +198,9 @@ GLint _glScene::drawScene()
           {
             if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) && (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
             {
-              cout << "enemy died" << endl;
-              cout << "Bullet pos: " << ply->bullets.at(j)->xPos << "," << ply->bullets.at(j)->yPos << endl;
-              cout << "Enemy pos: " << enms[i].xPos << "," << enms[i].yPos << endl;
-              enms[i].placeRandomly();
-              //delete ply->bullets.at(j);
-              //ply->bullets.erase(ply->bullets.begin()+j);
+              enms[i].initEnemy(enmsTex->tex);
             }
           }
-          enms[i].actions();
-
         }
 
       }
