@@ -68,7 +68,8 @@ GLint _glScene::initGL()
     enms[i].placeRandomly();
     //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
     //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
-    enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+    //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+    enms[i].xMove = (rand()%4*.001) + .001;
     enms[i].xSize = enms[i].ySize = 0.1;
 
     if (rand()%1 == 1) enms[i].xMove *= -1;
@@ -191,7 +192,6 @@ GLint _glScene::drawScene()
       glPushMatrix();
       ply->actions();
       ply->drawPlayer();
-      for (int i = 0; i < ply->bullets.size(); i++) ply->bullets.at(i)->draw();
       glPopMatrix();
 
       //Handles Enemy
@@ -202,7 +202,7 @@ GLint _glScene::drawScene()
           enms[i].xMove *= -1;
           enms[i].rotateZ = 0;
         }
-        else if (enms[i].xPos>=1.75)
+        else if (enms[i].xPos>1.75)
         {
           enms[i].action = 1;
           enms[i].xMove *= -1;
