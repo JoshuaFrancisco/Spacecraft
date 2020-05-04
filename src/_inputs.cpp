@@ -62,55 +62,28 @@ void _inputs::keyPressed(_player* ply)
         switch(wParam)
     {
        case VK_LEFT:
+            ply->action=0;
             //ply->distTraveled -= 1;
             //ply->direction = "left";
-            /*
-            if (ply->xPos > -2.5) {
-              ply->action=0;
-              ply->xPos-=.05;
-            }
-            */
-            ply->movingLeft = true;
-            ply->movingRight = false;
-            ply->movingUp = false;
-            ply->movingDown = false;
+            ply->xPos-=.05;
             break;
         case VK_RIGHT:
             //ply->distTraveled += 1;
+            ply->action=1;
             //ply->direction = "right";
-            /*
-            if (ply->xPos < 2.5){
-              ply->action=1;
-              ply->xPos+=.05;
-            }
-            */
-            ply->movingLeft = false;
-            ply->movingRight = true;
-            ply->movingUp = false;
-            ply->movingDown = false;
-            break;
+            ply->xPos+=.05;
+             break;
         case VK_DOWN:
             //ply->direction = "down";
-            //if (ply->yPos > -2) ply->yPos-=.05;
-            ply->movingLeft = false;
-            ply->movingRight = false;
-            ply->movingUp = false;
-            ply->movingDown = true;
+            ply->yPos-=.05;
             break;
         case VK_UP:
             //ply->direction = "up";
-            //if (ply->yPos < 2) ply->yPos+=.05;
-            ply->movingLeft = false;
-            ply->movingRight = false;
-            ply->movingUp = true;
-            ply->movingDown = false;
+            ply->yPos+=.05;
             break;
         case VK_SPACE:
             //shoot
             ply->shoot();
-            break;
-        case VK_RETURN:
-            break;
     }
 }
 
@@ -134,17 +107,9 @@ void _inputs::keyUp(_player* ply)
 {
      switch(wParam)
     {
-       case VK_LEFT:
-          ply->movingLeft = false;
-            break;
-       case VK_RIGHT:
-          ply->movingRight = false;
-            break;
-       case VK_DOWN:
-          ply->movingDown = false;
-            break;
-       case VK_UP:
-          ply->movingUp = false;
+        default:
+             ply->action=3;
+
             break;
     }
 
@@ -208,3 +173,4 @@ void _inputs::mouseMove(_Model* Mdl, double x, double y)
     prev_Mouse_X =x;
     prev_Mouse_Y =y;
 }
+

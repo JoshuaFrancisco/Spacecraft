@@ -9,8 +9,7 @@ _projectile::_projectile()
     verticies[2].x=1.0; verticies[2].y=1.0;verticies[2].z=-1.0;
     verticies[3].x=0.0; verticies[3].y=1.0;verticies[3].z=-1.0;
     xSize = ySize = 0.25;
-    xPos = yPos = xMove = yMove = xMin = yMin = 0.0;
-    zPos = -4.85;
+    xPos = yPos = zPos = xMove = yMove = xMin = yMin = 0.0;
     xMax = yMax = 1.0;
     distTraveled = maxDistance = 0;
 }
