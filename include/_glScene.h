@@ -4,6 +4,7 @@
 
 #include <windows.h>
 #include<GL/glut.h>
+#include <string>
 
 #include<iostream>
 
@@ -17,6 +18,10 @@ class _glScene
         GLint initGL();           // initialize OpenGL
         GLint drawScene();        // Renderer
         GLvoid reSizeScene(GLsizei, GLsizei); // screen size changes
+
+        //Score
+        //int score = 0;
+        //void drawText(string *, float, float);
 
         //game states identify which screen the game is in
         //enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3};

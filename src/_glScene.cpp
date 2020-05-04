@@ -9,6 +9,8 @@
 #include <_sound.h>
 #include <menu.h>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -40,6 +42,15 @@ _glScene::~_glScene()
 {
   //dtor
 }
+/*
+void _glScene::drawText(string *str, float x, float y) {
+    string *c;
+    glRasterPos2f(x,y);
+    for (c = str; *c != '\0'; c++) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+    }
+}
+*/
 GLint _glScene::initGL()
 {
 
@@ -53,7 +64,7 @@ GLint _glScene::initGL()
   _glLight Light(GL_LIGHT0);
 
   myModel->initModel();
-  enmsTex->loadTexture("images/enemy-03.png");
+  enmsTex->loadTexture("images/enemy-01.png");
   plxSky->parallaxInit("images/stage-back.png");
   //plxFloor->parallaxInit("images/asteroid-01.png");
   ply->initPlayer("images/ship-02.png");
@@ -85,7 +96,7 @@ GLint _glScene::initGL()
 GLint _glScene::drawScene()
 {
   switch(state) {
-    //splash screen
+    //landing screen
     case isSplash:
     {
       splash->menuInit("images/splash.png"); //load image for splash, 1920 x 1080 image
@@ -226,9 +237,15 @@ GLint _glScene::drawScene()
             if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) && (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
             {
               cout << "enemy died" << endl;
-              cout << "Bullet pos: " << ply->bullets.at(j)->xPos << "," << ply->bullets.at(j)->yPos << endl;
-              cout << "Enemy pos: " << enms[i].xPos << "," << enms[i].yPos << endl;
+              //cout << "Bullet pos: " << ply->bullets.at(j)->xPos << "," << ply->bullets.at(j)->yPos << endl;
+              //cout << "Enemy pos: " << enms[i].xPos << "," << enms[i].yPos << endl;
               enms[i].placeRandomly();
+              //score +=10;
+              //stringstream sc;
+              //sc << score;
+              //string s = sc.str();
+              //drawText(s, 5.0f, 5.0f);
+              //drawText(score, 4.0f, 4.0f);
               //delete ply->bullets.at(j);
               //ply->bullets.erase(ply->bullets.begin()+j);
             }

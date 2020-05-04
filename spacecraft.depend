@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1588205631 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\main.cpp
+1588554837 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<stdlib.h>
 	<iostream>
 	<windows.h>
 
-1588205440 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_glscene.h
+1588574743 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
+	<string>
 	<iostream>
 
 1580347169 c:\users\joshf\desktop\spacecraft-git\common\include\gl\glut.h
@@ -17,18 +18,18 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_checkcollision.cpp
+1588570789 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_checkcollision.cpp
 	"_checkCollision.h"
 	<math.h>
 
 1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_checkcollision.h
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_enms.cpp
+1588570806 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_enms.cpp
 	"_enms.h"
 	<math.h>
 	<cstdlib>
 
-1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_enms.h
+1588570632 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_enms.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
@@ -44,13 +45,13 @@
 1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_timer.h
 	<time.h>
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_gllight.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_gllight.cpp
 	"_glLight.h"
 
 1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_gllight.h
 	<_glScene.h>
 
-1588205334 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_glscene.cpp
+1588574734 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -62,6 +63,8 @@
 	<_sound.h>
 	<menu.h>
 	<iostream>
+	<string>
+	<sstream>
 
 1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_model.h
 	<windows.h>
@@ -82,14 +85,14 @@
 	<windows.h>
 	<_textureLoader.h>
 
-1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_player.h
+1588570735 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_player.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
 	<projectiles.h>
 	<vector>
 
-1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\projectiles.h
+1588570761 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\projectiles.h
 	<iostream>
 	<GL/gl.h>
 	<_textureLoader.h>
@@ -202,32 +205,32 @@
 	<gl/gl.h>
 	<windows.h>
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_inputs.cpp
+1588570852 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_inputs.cpp
 	"_inputs.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_model.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_model.cpp
 	"_model.h"
 	<_textureLoader.h>
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_parallax.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_parallax.cpp
 	"_parallax.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_player.cpp
+1588570860 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_player.cpp
 	"_player.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_sound.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_sound.cpp
 	"_sound.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_textureloader.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_textureloader.cpp
 	"_textureLoader.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_timer.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_timer.cpp
 	"_timer.h"
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\menu.cpp
+1588555085 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\menu.cpp
 	"menu.h"
 	<_textureLoader.h>
 
-1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\projectiles.cpp
+1588570868 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\projectiles.cpp
 	"projectiles.h"
 
