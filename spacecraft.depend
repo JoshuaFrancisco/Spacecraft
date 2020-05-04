@@ -1,56 +1,56 @@
 # depslib dependency file v1.0
-1588387184 source:c:\users\jesc3\documents\191t-game-design\game-project\main.cpp
+1588205631 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<stdlib.h>
 	<iostream>
 	<windows.h>
 
-1588387184 c:\users\jesc3\documents\191t-game-design\game-project\include\_glscene.h
+1588205440 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
 
-1580350770 c:\users\jesc3\documents\191t-game-design\common\include\gl\glut.h
+1580347169 c:\users\joshf\desktop\spacecraft-git\common\include\gl\glut.h
 	<windows.h>
 	<stdlib.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_checkcollision.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_checkcollision.cpp
 	"_checkCollision.h"
 	<math.h>
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\_checkcollision.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_checkcollision.h
 
-1588140867 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_enms.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_enms.cpp
 	"_enms.h"
 	<math.h>
 	<cstdlib>
 
-1588140867 c:\users\jesc3\documents\191t-game-design\game-project\include\_enms.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_enms.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
 	<math.h>
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\_textureloader.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_textureloader.h
 	<SOIL.h>
 	<GL/gl.h>
 	<iostream>
 
-1215483208 c:\users\jesc3\documents\191t-game-design\common\include\soil.h
+1215483208 c:\users\joshf\desktop\spacecraft-git\common\include\soil.h
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\_timer.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_timer.h
 	<time.h>
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_gllight.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_gllight.cpp
 	"_glLight.h"
 
-1588135899 c:\users\jesc3\documents\191t-game-design\game-project\include\_gllight.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_gllight.h
 	<_glScene.h>
 
-1588387184 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_glscene.cpp
+1588205334 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -63,43 +63,43 @@
 	<menu.h>
 	<iostream>
 
-1588135148 c:\users\jesc3\documents\191t-game-design\game-project\include\_model.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_model.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\_inputs.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_inputs.h
 	<windows.h>
 	<_Model.h>
 	<_parallax.h>
 	<_player.h>
 	<_sound.h>
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\_parallax.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_parallax.h
 	<iostream>
 	<string>
 	<gl/gl.h>
 	<windows.h>
 	<_textureLoader.h>
 
-1588140867 c:\users\jesc3\documents\191t-game-design\game-project\include\_player.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_player.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
 	<projectiles.h>
 	<vector>
 
-1588380025 c:\users\jesc3\documents\191t-game-design\game-project\include\projectiles.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\projectiles.h
 	<iostream>
 	<GL/gl.h>
 	<_textureLoader.h>
 
-1588140867 c:\users\jesc3\documents\191t-game-design\game-project\include\_sound.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\_sound.h
 	<snds/irrKlang.h>
 	<stdlib.h>
 	<iostream>
 
-1517339046 c:\users\jesc3\documents\191t-game-design\common\include\snds\irrklang.h
+1517335446 c:\users\joshf\desktop\spacecraft-git\common\include\snds\irrklang.h
 	"ik_irrKlangTypes.h"
 	"ik_vec3d.h"
 	"ik_IRefCounted.h"
@@ -121,29 +121,29 @@
 	"ik_IAudioRecorder.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_irrklangtypes.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_irrklangtypes.h
 	<wchar.h>
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_vec3d.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_vec3d.h
 	<math.h>
 	"ik_irrKlangTypes.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_irefcounted.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_irefcounted.h
 	"ik_irrKlangTypes.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_ivirtualrefcounted.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_ivirtualrefcounted.h
 	"ik_irrKlangTypes.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_esoundoutputdrivers.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_esoundoutputdrivers.h
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_esoundengineoptions.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_esoundengineoptions.h
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_estreammodes.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_estreammodes.h
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_saudiostreamformat.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_saudiostreamformat.h
 	"ik_IRefCounted.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isoundengine.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isoundengine.h
 	"ik_IRefCounted.h"
 	"ik_vec3d.h"
 	"ik_ISoundSource.h"
@@ -152,336 +152,82 @@
 	"ik_IFileFactory.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1517259632 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isoundsource.h
+1517256032 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isoundsource.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 	"ik_EStreamModes.h"
 	"ik_SAudioStreamFormat.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isound.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isound.h
 	"ik_IVirtualRefCounted.h"
 	"ik_ISoundEffectControl.h"
 	"ik_vec3d.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isoundeffectcontrol.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isoundeffectcontrol.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_ifilefactory.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_ifilefactory.h
 	"ik_IRefCounted.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isoundmixedoutputreceiver.h
-	"ik_IRefCounted.h"
-	"ik_SAudioStreamFormat.h"
-
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_iaudiostream.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isoundmixedoutputreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_iaudiostreamloader.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_iaudiostreamloader.h
 	"ik_IRefCounted.h"
 	"ik_IFileReader.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_ifilereader.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_ifilereader.h
 	"ik_IRefCounted.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isoundstopeventreceiver.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isoundstopeventreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1517259608 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_isounddevicelist.h
+1517256008 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_isounddevicelist.h
 	"ik_IRefCounted.h"
 
-1517259624 c:\users\jesc3\documents\191t-game-design\common\include\snds\ik_iaudiorecorder.h
+1517256024 c:\users\joshf\desktop\spacecraft-git\common\include\snds\ik_iaudiorecorder.h
 	"ik_IRefCounted.h"
 	"ik_ISoundSource.h"
 
-1588133588 c:\users\jesc3\documents\191t-game-design\game-project\include\menu.h
+1588150102 c:\users\joshf\desktop\spacecraft-git\spacecraft\include\menu.h
 	<iostream>
 	<string.h>
 	<gl/gl.h>
 	<windows.h>
 
-1588380025 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_inputs.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_inputs.cpp
 	"_inputs.h"
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_model.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_model.cpp
 	"_model.h"
 	<_textureLoader.h>
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_parallax.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_parallax.cpp
 	"_parallax.h"
 
-1588380025 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_player.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_player.cpp
 	"_player.h"
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_sound.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_sound.cpp
 	"_sound.h"
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_textureloader.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_textureloader.cpp
 	"_textureLoader.h"
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\_timer.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\_timer.cpp
 	"_timer.h"
 
-1588133588 source:c:\users\jesc3\documents\191t-game-design\game-project\src\menu.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\menu.cpp
 	"menu.h"
 	<_textureLoader.h>
 
-1588380025 source:c:\users\jesc3\documents\191t-game-design\game-project\src\projectiles.cpp
-	"projectiles.h"
-
-1588387184 source:c:\users\jesc3\documents\github\spacecraft - copy\main.cpp
-	<windows.h>
-	<_glScene.h>
-	<stdlib.h>
-	<iostream>
-	<windows.h>
-
-1588387184 c:\users\jesc3\documents\github\spacecraft - copy\include\_glscene.h
-	<windows.h>
-	<GL/glut.h>
-	<iostream>
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_checkcollision.cpp
-	"_checkCollision.h"
-	<math.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\_checkcollision.h
-
-1588140867 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_enms.cpp
-	"_enms.h"
-	<math.h>
-	<cstdlib>
-
-1588140867 c:\users\jesc3\documents\github\spacecraft - copy\include\_enms.h
-	<GL/gl.h>
-	<_textureLoader.h>
-	<_timer.h>
-	<math.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\_textureloader.h
-	<SOIL.h>
-	<GL/gl.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\_timer.h
-	<time.h>
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_gllight.cpp
-	"_glLight.h"
-
-1588135899 c:\users\jesc3\documents\github\spacecraft - copy\include\_gllight.h
-	<_glScene.h>
-
-1588387184 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_glscene.cpp
-	"_glScene.h"
-	<_glLight.h>
-	<_Model.h>
-	<_inputs.h>
-	<_parallax.h>
-	<_player.h>
-	<_enms.h>
-	<_checkCollision.h>
-	<_sound.h>
-	<menu.h>
-	<iostream>
-
-1588135148 c:\users\jesc3\documents\github\spacecraft - copy\include\_model.h
-	<windows.h>
-	<GL/glut.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\_inputs.h
-	<windows.h>
-	<_Model.h>
-	<_parallax.h>
-	<_player.h>
-	<_sound.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\_parallax.h
-	<iostream>
-	<string>
-	<gl/gl.h>
-	<windows.h>
-	<_textureLoader.h>
-
-1588140867 c:\users\jesc3\documents\github\spacecraft - copy\include\_player.h
-	<GL/gl.h>
-	<_textureLoader.h>
-	<_timer.h>
-	<projectiles.h>
-	<vector>
-
-1588380025 c:\users\jesc3\documents\github\spacecraft - copy\include\projectiles.h
-	<iostream>
-	<GL/gl.h>
-	<_textureLoader.h>
-
-1588140867 c:\users\jesc3\documents\github\spacecraft - copy\include\_sound.h
-	<snds/irrKlang.h>
-	<stdlib.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft - copy\include\menu.h
-	<iostream>
-	<string.h>
-	<gl/gl.h>
-	<windows.h>
-
-1588380025 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_inputs.cpp
-	"_inputs.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_model.cpp
-	"_model.h"
-	<_textureLoader.h>
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_parallax.cpp
-	"_parallax.h"
-
-1588380025 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_player.cpp
-	"_player.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_sound.cpp
-	"_sound.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_textureloader.cpp
-	"_textureLoader.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\_timer.cpp
-	"_timer.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft - copy\src\menu.cpp
-	"menu.h"
-	<_textureLoader.h>
-
-1588380025 source:c:\users\jesc3\documents\github\spacecraft - copy\src\projectiles.cpp
-	"projectiles.h"
-
-1588387184 source:c:\users\jesc3\documents\github\spacecraft\main.cpp
-	<windows.h>
-	<_glScene.h>
-	<stdlib.h>
-	<iostream>
-	<windows.h>
-
-1588387184 c:\users\jesc3\documents\github\spacecraft\include\_glscene.h
-	<windows.h>
-	<GL/glut.h>
-	<iostream>
-
-1588477212 source:c:\users\jesc3\documents\github\spacecraft\src\_checkcollision.cpp
-	"_checkCollision.h"
-	<math.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\_checkcollision.h
-
-1588562661 source:c:\users\jesc3\documents\github\spacecraft\src\_enms.cpp
-	"_enms.h"
-	<math.h>
-	<cstdlib>
-
-1588475402 c:\users\jesc3\documents\github\spacecraft\include\_enms.h
-	<GL/gl.h>
-	<_textureLoader.h>
-	<_timer.h>
-	<math.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\_textureloader.h
-	<SOIL.h>
-	<GL/gl.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\_timer.h
-	<time.h>
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_gllight.cpp
-	"_glLight.h"
-
-1588135899 c:\users\jesc3\documents\github\spacecraft\include\_gllight.h
-	<_glScene.h>
-
-1588564251 source:c:\users\jesc3\documents\github\spacecraft\src\_glscene.cpp
-	"_glScene.h"
-	<_glLight.h>
-	<_Model.h>
-	<_inputs.h>
-	<_parallax.h>
-	<_player.h>
-	<_enms.h>
-	<_checkCollision.h>
-	<_sound.h>
-	<menu.h>
-	<iostream>
-
-1588135148 c:\users\jesc3\documents\github\spacecraft\include\_model.h
-	<windows.h>
-	<GL/glut.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\_inputs.h
-	<windows.h>
-	<_Model.h>
-	<_parallax.h>
-	<_player.h>
-	<_sound.h>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\_parallax.h
-	<iostream>
-	<string>
-	<gl/gl.h>
-	<windows.h>
-	<_textureLoader.h>
-
-1588567080 c:\users\jesc3\documents\github\spacecraft\include\_player.h
-	<GL/gl.h>
-	<_textureLoader.h>
-	<_timer.h>
-	<projectiles.h>
-	<vector>
-
-1588564018 c:\users\jesc3\documents\github\spacecraft\include\projectiles.h
-	<iostream>
-	<GL/gl.h>
-	<_textureLoader.h>
-
-1588140867 c:\users\jesc3\documents\github\spacecraft\include\_sound.h
-	<snds/irrKlang.h>
-	<stdlib.h>
-	<iostream>
-
-1588133588 c:\users\jesc3\documents\github\spacecraft\include\menu.h
-	<iostream>
-	<string.h>
-	<gl/gl.h>
-	<windows.h>
-
-1588568204 source:c:\users\jesc3\documents\github\spacecraft\src\_inputs.cpp
-	"_inputs.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_model.cpp
-	"_model.h"
-	<_textureLoader.h>
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_parallax.cpp
-	"_parallax.h"
-
-1588567727 source:c:\users\jesc3\documents\github\spacecraft\src\_player.cpp
-	"_player.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_sound.cpp
-	"_sound.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_textureloader.cpp
-	"_textureLoader.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\_timer.cpp
-	"_timer.h"
-
-1588133588 source:c:\users\jesc3\documents\github\spacecraft\src\menu.cpp
-	"menu.h"
-	<_textureLoader.h>
-
-1588563313 source:c:\users\jesc3\documents\github\spacecraft\src\projectiles.cpp
+1588150103 source:c:\users\joshf\desktop\spacecraft-git\spacecraft\src\projectiles.cpp
 	"projectiles.h"
 

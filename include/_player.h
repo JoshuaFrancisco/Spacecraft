@@ -27,12 +27,17 @@ class _player
         float yPos;   //y position of the Player
         float zPos;   //z position of the Player
 
-        float xSize, ySize;
-        float xRotation, yRotation, zRotation;
-        float xMove, yMove, speed;
+        float xSize;
+        float ySize;
+
+        float xRotation;
+        float yRotation;
+        float zRotation;
+
+        float runSpeed;
+        float jumpSpeed;
 
         string direction = "up";
-        bool movingLeft, movingRight, movingUp, movingDown;
         vector<_projectile*> bullets;
 
         void drawPlayer();

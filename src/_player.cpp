@@ -3,6 +3,8 @@
 _textureLoader *T= new _textureLoader();
 _timer *tmr = new _timer();
 
+_projectile *bullet = new _projectile();
+
 
 _player::_player()
 {
@@ -12,17 +14,27 @@ _player::_player()
     verticies[2].x=1.0; verticies[2].y=1.0;verticies[2].z=-1.0;
     verticies[3].x=0.0; verticies[3].y=1.0;verticies[3].z=-1.0;
 
-    xPos = 0.0;   //x position of the Player
-    yPos = -2.0;   //y position of the Player
-    zPos = -5.0;   //z position of the Player
-    xMin = yMin = 0.0;
-    yMax = xMax = 1.0;
-    xSize = ySize = 1.0;
-    xRotation, yRotation, zRotation=0.0;
-    xMove = yMove = speed = 0.005;
-    movingLeft = movingRight = movingUp = movingDown = false;
+    runSpeed =0;
+    jumpSpeed =0;
+
+    xPos=0.0;   //x position of the Player
+    yPos=-2.0;   //y position of the Player
+    zPos=-5.0;   //z position of the Player
+
+    xSize =1.0;
+    ySize =1.0;
+
+    xRotation=0.0;
+    yRotation=0.0;
+    zRotation=0.0;
+
     action =-1;
+
     frames = 1;
+    xMin=0.0;
+    yMin=0.0;
+    yMax=1.0;
+    xMax=1.0;
 }
 
 _player::~_player()
@@ -74,10 +86,48 @@ void _player::initPlayer(char *fileName)
 
 void _player::actions()
 {
-    if(movingLeft) xPos -= xMove;
-    if(movingRight) xPos += xMove;
-    if(movingDown) yPos -= yMove;
-    if(movingUp) yPos += yMove;
+/*
+    switch(action)
+    {
+
+        case 0: //left arrow
+                if(tmr->getTicks()>60)
+                {
+                //xMin+=1.0/frames*-1;
+                //xMax+=1.0/frames*-1;
+                yMax=0.333;
+                xMax=-1.0;
+                if(xMax>=1){xMin=0.0; xMax=1/frames;}
+
+                tmr->reset();
+                }
+
+            break;
+        case 1: //right arrow
+            if(tmr->getTicks()>60)
+                {
+                //xMin+=1.0/frames;
+                //xMin+=1.0/frames;
+                //xMax+=1.0/frames;
+                yMax=0.333;
+                xMax=-1.0;
+                if(xMax>=1){xMin=1.0/frames; xMax=0.0/frames;}
+
+                tmr->reset();
+                }
+            break;
+
+        case 3:
+            frames =0.5;
+            xMin=1;
+            yMin=-0.5;
+            yMax=0.333;
+            xMax=-1.0;
+            break;
+
+
+    }
+    */
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {
@@ -89,14 +139,15 @@ void _player::actions()
         bullets.erase(bullets.begin()+i);
       }
     }
+
+
 }
 
 void _player::shoot(){
-  _projectile *bullet = new _projectile();
   bullet->xSize = bullet->ySize = 0.20;
   //The following numbers are relative to sprite and player location on screen
-  bullet->xPos = (xPos*.8) + 0.4;
-  bullet->yPos = (yPos*.8) + 0.5;
+  bullet->xPos = xPos + 0.0;
+  bullet->yPos = yPos + 2.35;
   bullet->maxDistance = 300; // How far the bullet travels before disapear
   //if (direction == "right") bullet->xMove = 0.01;
   //else if (direction == "left") bullet->xMove = -0.01;
@@ -109,3 +160,5 @@ void _player::shoot(){
   bullet->init("images/PlayerProjectile.png");
   bullets.push_back(bullet);
 }
+
+
