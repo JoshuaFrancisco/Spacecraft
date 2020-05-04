@@ -12,7 +12,7 @@ _checkCollision::~_checkCollision()
 }
 bool _checkCollision::isLinearCollision(float x1, float x2)
 {
-    if(fabs(x1-x2<0.1))return true;
+    if(fabs(x1-x2)<0.1)return true;
     return false;
 }
 
