@@ -267,6 +267,7 @@ GLint _glScene::drawScene()
           state = isOver;
           enms[i].yPos = 1.0;
         }
+        enms[i].actions();
 
         //Handles Collision
         for (int j = 0; j < ply->bullets.size();j++)
@@ -290,7 +291,6 @@ GLint _glScene::drawScene()
               //ply->bullets.erase(ply->bullets.begin()+j);
             }
           }
-          enms[i].actions();
         }
         // win and go to next level
         if (level1 && kills == 5) {
