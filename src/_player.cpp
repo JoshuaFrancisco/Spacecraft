@@ -85,8 +85,10 @@ void _player::actions()
         bullets.at(i)->draw();
       }
       else {
-        delete bullets.at(i);
+        _projectile *bullet = bullets.at(i);
         bullets.erase(bullets.begin()+i);
+        i -= 1;
+        delete bullet;
       }
     }
 }
@@ -97,7 +99,7 @@ void _player::shoot(){
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = (xPos*.8) + 0.4;
   bullet->yPos = (yPos*.8) + 0.5;
-  bullet->maxDistance = 300; // How far the bullet travels before disapear
+  bullet->maxDistance = 1.5; // How far the bullet travels before disapear
   //if (direction == "right") bullet->xMove = 0.01;
   //else if (direction == "left") bullet->xMove = -0.01;
   //else if (direction == "up") bullet->yMove = 0.003;
