@@ -89,11 +89,13 @@ void _player::actions()
         bullets.erase(bullets.begin()+i);
         i -= 1;
         delete bullet;
+        bulletCount -= 1;
       }
     }
 }
 
 void _player::shoot(){
+  if (bulletCount >= maxBullets) return;
   _projectile *bullet = new _projectile();
   bullet->xSize = bullet->ySize = 0.20;
   //The following numbers are relative to sprite and player location on screen
@@ -110,4 +112,5 @@ void _player::shoot(){
   else if (direction == "down") bullet->yMove -= bullet->speed;
   bullet->init("images/PlayerProjectile.png");
   bullets.push_back(bullet);
+  bulletCount += 1;
 }

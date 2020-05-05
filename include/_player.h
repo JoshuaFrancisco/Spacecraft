@@ -33,6 +33,7 @@ class _player
 
         string direction = "up";
         bool movingLeft, movingRight, movingUp, movingDown;
+        int maxBullets = 3, bulletCount = 0;
         vector<_projectile*> bullets;
 
         void drawPlayer();
