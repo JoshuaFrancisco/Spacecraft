@@ -74,10 +74,10 @@ void _player::initPlayer(char *fileName)
 
 void _player::actions()
 {
-    if(movingLeft) xPos -= xMove;
-    if(movingRight) xPos += xMove;
-    if(movingDown) yPos -= yMove;
-    if(movingUp) yPos += yMove;
+    if(movingLeft && xPos > -3) xPos -= xMove;
+    if(movingRight && xPos < 3) xPos += xMove;
+    if(movingDown && yPos > -2) yPos -= yMove;
+    if(movingUp && yPos < 2) yPos += yMove;
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {
@@ -99,7 +99,7 @@ void _player::shoot(){
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = (xPos*.8) + 0.4;
   bullet->yPos = (yPos*.8) + 0.5;
-  bullet->maxDistance = 2.5; // How far the bullet travels before disapear
+  bullet->maxDistance = 3.25; // How far the bullet travels before disapear
   //if (direction == "right") bullet->xMove = 0.01;
   //else if (direction == "left") bullet->xMove = -0.01;
   //else if (direction == "up") bullet->yMove = 0.003;

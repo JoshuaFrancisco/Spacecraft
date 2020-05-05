@@ -57,7 +57,7 @@ GLint _glScene::initGL()
         //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
         //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
         enms[i].xMove = (rand()%4*.001) + .001;
-        enms[i].xSize = enms[i].ySize = 0.1;
+        enms[i].xSize = enms[i].ySize = 0.2;
 
         if (rand()%1 == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;
@@ -87,7 +87,7 @@ GLint _glScene::initGL()
         //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
         //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
         enms[i].xMove = (rand()%4*.001) + .001;
-        enms[i].xSize = enms[i].ySize = 0.1;
+        enms[i].xSize = enms[i].ySize = 0.2;
 
         if (rand()%1 == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;
@@ -116,7 +116,7 @@ GLint _glScene::initGL()
             //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
             //enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
             enms[i].xMove = (rand()%4*.001) + .001;
-            enms[i].xSize = enms[i].ySize = 0.1;
+            enms[i].xSize = enms[i].ySize = 0.2;
 
             if (rand()%1 == 1) enms[i].xMove *= -1;
             enms[i].yMove = -0.0005;
@@ -206,7 +206,7 @@ GLint _glScene::drawScene()
         //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
         //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
         enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
-        enms[i].xSize = enms[i].ySize = 0.1;
+        enms[i].xSize = enms[i].ySize = 0.2;
 
         if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;

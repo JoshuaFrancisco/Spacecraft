@@ -68,7 +68,7 @@ void _enms::placeRandomly()
     //xPos = rand()/float(RAND_MAX)*5-2.5;
     xPos = (rand()%20*.1)-0.5;
     yPos = (rand()%25 * .1)+1.5;
-    zPos = -2.5;
+    zPos = -4.95;
 }
 
 
