@@ -37,17 +37,14 @@ class _glScene
         bool doneLoading, level1, level2, level3;
 
         //game states identify which screen the game is in
-        //enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3};
-        enum gameState{ isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3, isOver = 4, isCredits = 5};
-        gameState state = isSplash; //initialize state to splash
+        enum gameState{isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3, isOver = 4, isCredits = 5, isWin = 6};
+        gameState state = isSplash; //initialize state to first cut scene
 
         int winMsg(HWND, UINT, WPARAM, LPARAM);	// Callback of inputs
 
         //WPARAM wParm;
 
         float screenHeight, screenWidth; // to map background images
-
-
 
         _Model *myModel = new _Model();
         _inputs *kBMs = new _inputs();
@@ -57,14 +54,26 @@ class _glScene
         _checkCollision *hit = new _checkCollision();
         _sound *snds = new _sound();
 
+        //menus
         menu *mnu = new menu();
         menu *splash = new menu();
         menu *hlp = new menu();
         menu *over = new menu();
         menu *cred = new menu();
+        menu *win = new menu();
 
+        //cut scenes
+        bool intro1 = true, intro2 = false, intro3 = false, spl = false;
+
+        //enemies texture loader
         _textureLoader *enmsTex = new _textureLoader();
+        _textureLoader *enmsTex2 = new _textureLoader();
+        _textureLoader *bossTex = new _textureLoader();
+
+        //enemies
         _enms enms[5];
+        _enms enms2[10];
+        _enms boss[1];
     protected:
 
     private:

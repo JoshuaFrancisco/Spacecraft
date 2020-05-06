@@ -430,12 +430,34 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			}
 			else									// Not Time To Quit, Update Screen
 			{
-			    //if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp)){ //press ENTER on splash or help to go to menu
-                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver || Scene->state == Scene->isCredits)){ //press ENTER on splash or help to go to menu
+                  if(keys[VK_TAB])
+                    {
+                    if (Scene->intro1) {
+                        keys[VK_TAB]=FALSE;
+                        Scene->intro1 = false;
+                        Scene->intro2 = true;
+                        }
+                    else if (Scene->intro2) {
+                        keys[VK_TAB]=FALSE;
+                        Scene->intro2 = false;
+                        Scene->intro3 = true;
+                        }
+                    else if (Scene->intro3) {
+                        keys[VK_TAB]=FALSE;
+                        Scene->intro3 = false;
+                        Scene->spl = true;
+                        }
+                    else if (Scene->spl) {
+                        keys[VK_TAB]=FALSE;
+                        Scene->spl = false;
+                        }
+                }
+                if(keys[VK_RETURN] && (Scene->state == Scene->isSplash || Scene->state == Scene->isHelp || Scene->state == Scene->isOver || Scene->state == Scene->isCredits || Scene->state == Scene->isWin)){ //press ENTER on splash or help to go to menu
                     keys[VK_RETURN]=FALSE;
                     Scene->state = Scene->isMenu; //go to main menu
+                    Scene->snds->engine->stopAllSounds();
+                    Scene->snds->playMusic("sounds/background-music.mp3");
 			    }
-
 			    if(keys[0x4E] && Scene->state == Scene->isMenu){ //press N and in menu
                     keys[0x4E]=FALSE;
                     Scene->initGL();

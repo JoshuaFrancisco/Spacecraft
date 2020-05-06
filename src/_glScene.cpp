@@ -132,18 +132,55 @@ GLint _glScene::initGL()
 GLint _glScene::drawScene()
 {
   switch(state) {
+    //game cinematic
+
     //landing screen
     case isSplash:
     {
-      splash->menuInit("images/splash.png"); //load image for splash, 1920 x 1080 image
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
-      glLoadIdentity();									// Reset The Current Modelview Matrix
-      glPushMatrix();
-      glTranslated(0,0,-4.5); //move image back
-      glScalef(2,2,1); //scale image
-      splash->drawMenu(screenWidth, screenHeight); //draw splash
-      glPopMatrix();
-      break;
+    if (intro1) {
+          splash->menuInit("images/intro1.png"); //load image for intro, 1920 x 1080 image
+          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+          glLoadIdentity();                                    // Reset The Current Modelview Matrix
+          glPushMatrix();
+          glTranslated(0,0,-4.5); //move image back
+          glScalef(2,2,1); //scale image
+          splash->drawMenu(screenWidth, screenHeight); //draw intro
+          glPopMatrix();
+          break;
+    }
+    if (intro2) {
+          splash->menuInit("images/intro2.png"); //load image for intro, 1920 x 1080 image
+          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+          glLoadIdentity();                                    // Reset The Current Modelview Matrix
+          glPushMatrix();
+          glTranslated(0,0,-4.5); //move image back
+          glScalef(2,2,1); //scale image
+          splash->drawMenu(screenWidth, screenHeight); //draw intro
+          glPopMatrix();
+          break;
+    }
+    if (intro3) {
+          splash->menuInit("images/intro3.png"); //load image for intro, 1920 x 1080 image
+          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+          glLoadIdentity();                                    // Reset The Current Modelview Matrix
+          glPushMatrix();
+          glTranslated(0,0,-4.5); //move image back
+          glScalef(2,2,1); //scale image
+          splash->drawMenu(screenWidth, screenHeight); //draw intro
+          glPopMatrix();
+          break;
+    }
+    if (spl) {
+          splash->menuInit("images/splash.png"); //load image for splash, 1920 x 1080 image
+          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+          glLoadIdentity();                                    // Reset The Current Modelview Matrix
+          glPushMatrix();
+          glTranslated(0,0,-4.5); //move image back
+          glScalef(2,2,1); //scale image
+          splash->drawMenu(screenWidth, screenHeight); //draw splash
+          glPopMatrix();
+          break;
+        }
     }
 
     //main menu
@@ -184,6 +221,37 @@ GLint _glScene::drawScene()
       glScalef(2,2,1); //scale image
       cred->drawMenu(screenWidth, screenHeight); //draw credits
       glPopMatrix();
+      break;
+    }
+    //win game
+    case isWin:
+    {
+
+      win->menuInit("images/win.png"); //load image for credits
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear Screen And Depth Buffer
+      glLoadIdentity();                                    // Reset The Current Modelview Matrix
+      glPushMatrix();
+      glTranslated(0,0,-4.0); //move image back
+      glScalef(2,2,1); //scale image
+      win->drawMenu(screenWidth, screenHeight); //draw credits
+      glPopMatrix();
+
+       //Resets enemies for New game
+      for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+      {
+        enms[i].initEnemy(enmsTex->tex);
+        enms[i].placeRandomly();
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
+        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+        enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
+        enms[i].xSize = enms[i].ySize = 0.2;
+
+        if (((float) (rand()/float(RAND_MAX))/100) == 1) enms[i].xMove *= -1;
+        enms[i].yMove = -0.0005;
+      }
+      level1 = true;
+      level2 = false;
+      level3 = false;
       break;
     }
     //game over
@@ -301,14 +369,15 @@ GLint _glScene::drawScene()
         }
         if (level2 && kills == 5) {
             level3 = true;
-            level1 = false;
+            level2 = false;
             doneLoading = false;
             kills = 0;
         }
         if (level3 && kills == 5) {
+            state = isWin;
+            cout << state;
             level3 = false;
-            doneLoading = false;
-            state = isOver;
+            //doneLoading = false;
             kills = 0;
         }
       }
