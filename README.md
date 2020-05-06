@@ -1,5 +1,3 @@
-### IMPORTANT: WHEN COMMITING CHANGES DO NOT COMMIT DEPEND AND LAYOUT FILES, THIS WILL MESS WITH RELATIVE PATHS ON EVERYONE'S COMPUTERS. MAKE SURE TO CREATE BACKUP DEPEND AND LAYOUT FILES WHEN CLONING RESPOSITORIES.
-
 # Spacecraft
 ## Team: Snowstorm Entertainment
 
@@ -7,12 +5,10 @@ Game Development Project made with OpenGL and C++
 
 ### Description:
 
-A top-down isometric space shooter where a player must defend his position from a swarm of alien enemies, if these alien enemies can make it past to the bottom of the screen then GAME OVER.
+A top-down isometric space shooter where a player must defend his position before a swarm of enemies overwhelm's him
 
 ### Running Environment:
 CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a 
-
-#### NOTE: common folder not provided they can be found in the discord
 
 ### How to Run it:
 
@@ -21,11 +17,11 @@ CodeBlocks, OpenGL/GLUT, SOIL, irrKlang.a
 !['Step 1'](https://cdn.discordapp.com/attachments/185652814645690368/704954209707098183/step1.png)
 
 
-#### Set the relative path for your common folder which should include dependency files such as irrKlang.a, SOIL, and GLUT
+Set the relative path for your common folder which should include dependency files such as irrKlang.a, SOIL, and GLUT
 
 !['Step 1.1'](https://cdn.discordapp.com/attachments/185652814645690368/704954988102811728/step_1.1.png)
 
-#### 2.) Create a new class naming it whatever in this instance I am creating a projectiles class which will create a .cpp and .h file in a src and include folder which we can be seen on the left where the project Manager is 
+#### 2.) Create a new Class naming it whatever in this instance I am creating a _projectiles which will create a .ccp and .h file in a src and include folder 
 
 !['Step 2'](https://cdn.discordapp.com/attachments/185652814645690368/704956241083891752/step2.png)
 
