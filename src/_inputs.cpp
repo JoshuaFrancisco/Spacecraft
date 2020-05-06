@@ -62,32 +62,59 @@ void _inputs::keyPressed(_player* ply)
         switch(wParam)
     {
        case VK_LEFT:
-            ply->action=0;
             //ply->distTraveled -= 1;
             //ply->direction = "left";
-            ply->xPos-=.05;
+            /*
+            if (ply->xPos > -2.5) {
+              ply->action=0;
+              ply->xPos-=.05;
+            }
+            */
+            ply->movingLeft = true;
+            ply->movingRight = false;
+            ply->movingUp = false;
+            ply->movingDown = false;
             break;
         case VK_RIGHT:
             //ply->distTraveled += 1;
-            ply->action=1;
             //ply->direction = "right";
-            ply->xPos+=.05;
-             break;
+            /*
+            if (ply->xPos < 2.5){
+              ply->action=1;
+              ply->xPos+=.05;
+            }
+            */
+            ply->movingLeft = false;
+            ply->movingRight = true;
+            ply->movingUp = false;
+            ply->movingDown = false;
+            break;
         case VK_DOWN:
             //ply->direction = "down";
-            ply->yPos-=.05;
+            //if (ply->yPos > -2) ply->yPos-=.05;
+            ply->movingLeft = false;
+            ply->movingRight = false;
+            ply->movingUp = false;
+            ply->movingDown = true;
             break;
         case VK_UP:
             //ply->direction = "up";
-            ply->yPos+=.05;
+            //if (ply->yPos < 2) ply->yPos+=.05;
+            ply->movingLeft = false;
+            ply->movingRight = false;
+            ply->movingUp = true;
+            ply->movingDown = false;
             break;
         case VK_SPACE:
             //shoot
             ply->shoot();
+            break;
+        case VK_RETURN:
+            break;
     }
 }
 
-
+//Sound inputs
 void _inputs::keyPressed(_sound* snd)
 {
      switch(wParam)
@@ -95,10 +122,16 @@ void _inputs::keyPressed(_sound* snd)
         case VK_SPACE:
              snd->playSound("sounds/pew.mp3");
              break;
-        /*case VK_DOWN:
-             snd->playSound("sounds/p.mp3");
+        case VK_RETURN:
+        case 0x48: // H for Help
+        case 0x45: // E for Exit Game
+        case 0x43: // C for Credits
+             snd->playSound("sounds/select-sound2.mp3");
              break;
-    */
+        case 0x4E: // N for New Game
+             snd->playSound("sounds/select-sound.mp3");
+             break;
+
     }
 }
 
@@ -107,9 +140,17 @@ void _inputs::keyUp(_player* ply)
 {
      switch(wParam)
     {
-        default:
-             ply->action=3;
-
+       case VK_LEFT:
+          ply->movingLeft = false;
+            break;
+       case VK_RIGHT:
+          ply->movingRight = false;
+            break;
+       case VK_DOWN:
+          ply->movingDown = false;
+            break;
+       case VK_UP:
+          ply->movingUp = false;
             break;
     }
 
@@ -173,4 +214,3 @@ void _inputs::mouseMove(_Model* Mdl, double x, double y)
     prev_Mouse_X =x;
     prev_Mouse_Y =y;
 }
-

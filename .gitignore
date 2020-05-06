@@ -1,0 +1,5 @@
+
+*.exe
+*.o
+spacecraft.depend
+spacecraft.layout

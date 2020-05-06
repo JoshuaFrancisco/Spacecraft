@@ -17,6 +17,7 @@ class _enms
 
         void drawEnemy(); //drawing enemies
         void placeEnemy(float,float,float); //placing enemies with a three dimensional atmosphere
+        void placeRandomly();
         void initEnemy(GLuint);
         void actions(); //movements and actions you want to add
 
