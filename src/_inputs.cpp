@@ -62,51 +62,30 @@ void _inputs::keyPressed(_player* ply)
         switch(wParam)
     {
        case VK_LEFT:
-            //ply->distTraveled -= 1;
-            //ply->direction = "left";
-            /*
-            if (ply->xPos > -2.5) {
-              ply->action=0;
-              ply->xPos-=.05;
-            }
-            */
             ply->movingLeft = true;
             ply->movingRight = false;
             ply->movingUp = false;
             ply->movingDown = false;
             break;
         case VK_RIGHT:
-            //ply->distTraveled += 1;
-            //ply->direction = "right";
-            /*
-            if (ply->xPos < 2.5){
-              ply->action=1;
-              ply->xPos+=.05;
-            }
-            */
             ply->movingLeft = false;
             ply->movingRight = true;
             ply->movingUp = false;
             ply->movingDown = false;
             break;
         case VK_DOWN:
-            //ply->direction = "down";
-            //if (ply->yPos > -2) ply->yPos-=.05;
             ply->movingLeft = false;
             ply->movingRight = false;
             ply->movingUp = false;
             ply->movingDown = true;
             break;
         case VK_UP:
-            //ply->direction = "up";
-            //if (ply->yPos < 2) ply->yPos+=.05;
             ply->movingLeft = false;
             ply->movingRight = false;
             ply->movingUp = true;
             ply->movingDown = false;
             break;
         case VK_SPACE:
-            //shoot
             ply->shoot();
             break;
         case VK_RETURN:
@@ -175,11 +154,9 @@ void _inputs::mouseEventDown(_Model* Mdl, double x, double y)
 
         case MK_LBUTTON:
             Mouse_Rotate=true;
-           //Mouse_Translate=false;
             break;
         case MK_RBUTTON:
             Mouse_Translate=true;
-          //  Mouse_Rotate =false;
             break;
         case MK_MBUTTON:break;
 

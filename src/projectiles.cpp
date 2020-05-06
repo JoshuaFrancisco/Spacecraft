@@ -12,7 +12,6 @@ _projectile::_projectile()
     xPos = yPos = xMove = yMove = xMin = yMin = 0.0;
     zPos = -4.85;
     xMax = yMax = 1.0;
-    distTraveled = maxDistance = 0;
 }
 
 _projectile::~_projectile()
@@ -54,11 +53,9 @@ void _projectile::draw(){
 }
 
 void _projectile::move(){
-  distTraveled += (xMove + yMove);
-  //xPos += speed;
   yPos += speed;
 }
 
 bool _projectile::expired(){
-  return distTraveled >= maxDistance;
+  return yPos >= 1.9;
 }
