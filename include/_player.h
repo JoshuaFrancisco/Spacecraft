@@ -42,7 +42,7 @@ class _player
         void shoot();
 
         void actions();   // may have to pass different frame numbers
-        int action;          // give values for run jump etc.
+        int action, health;          // give values for run jump etc.
         float frames;
         float xMax,xMin,yMax,yMin;
 

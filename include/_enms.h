@@ -22,6 +22,7 @@ class _enms
         void actions(); //movements and actions you want to add
         void kill();
 
+        int health;       //How many times the enemy can be hit before death
         bool isEnemyLive; //Status of the enemy
         GLuint EnemyTex; //Texture handler
 
@@ -36,11 +37,10 @@ class _enms
         _timer *TE = new _timer();
 
         float theta,v,t; //angle , velocity, time
+        float xMin, yMin, xMax, yMax;
 
     protected:
-
     private:
-        float xMin, yMin, xMax, yMax;
 };
 
 #endif // _ENMS_H

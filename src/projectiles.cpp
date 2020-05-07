@@ -12,6 +12,8 @@ _projectile::_projectile()
     xPos = yPos = xMove = yMove = xMin = yMin = 0.0;
     zPos = -4.85;
     xMax = yMax = 1.0;
+    speed = .01;
+    isHostile = false;
 }
 
 _projectile::~_projectile()
@@ -53,9 +55,15 @@ void _projectile::draw(){
 }
 
 void _projectile::move(){
-  yPos += speed;
+  if (isHostile){
+    xPos += xMove;
+    yPos += yMove;
+  }
+  else yPos += speed;
 }
 
 bool _projectile::expired(){
+  //if (yPos >= 1.9 || yPos <= -5 || xPos <= -5 || xPos >= 5) return false;
   return yPos >= 1.9;
+  //return true;
 }

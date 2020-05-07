@@ -8,9 +8,9 @@ _glScene::_glScene()
   screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
   doneLoading = false;
-  level1 = true;
+  level1 = false;
   level2 = false;
-  level3 = false;
+  level3 = true;
 }
 
 _glScene::~_glScene()
@@ -42,11 +42,13 @@ GLint _glScene::initGL()
       //glEnable(GL_COLOR_MATERIAL
     for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
       {
+         //Initialization of enemies
         enms[i].initEnemy(enmsTex->tex);
         enms[i].placeRandomly();
         enms[i].xMove = (rand()%4*.001) + .001;
         enms[i].xSize = enms[i].ySize = 0.2;
 
+         //Randomize starting movement direction (left/right)
         if (rand()%1 == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;
       }
@@ -66,11 +68,13 @@ GLint _glScene::initGL()
 
     for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
       {
+         //Initialization of enemies
         enms[i].initEnemy(enmsTex->tex);
         enms[i].placeRandomly();
         enms[i].xMove = (rand()%4*.001) + .001;
         enms[i].xSize = enms[i].ySize = 0.2;
 
+         //Randomize starting movement direction (left/right)
         if (rand()%1 == 1) enms[i].xMove *= -1;
         enms[i].yMove = -0.0005;
       }
@@ -82,24 +86,19 @@ GLint _glScene::initGL()
   if (level3)
     {
       myModel->initModel();
-      enmsTex->loadTexture("images/boss-01.png"); //new enemy
+      enmsTex->loadTexture("images/enemy-01.png"); //new enemy
+      bossTex->loadTexture("images/boss-01.png"); //boss
       plxSky->parallaxInit("images/stage-back3.png"); //new background
       ply->initPlayer("images/ship-02.png");
 
-        enms[1];
-        for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
-          {
-            enms[i].initEnemy(enmsTex->tex);
-            enms[i].placeRandomly();
-            enms[i].xMove = (rand()%4*.001) + .001;
-            enms[i].xSize = enms[i].ySize = 0.2;
+      //Boss Initialization, most variables taken care of in constructor
+      boss.initEnemy(bossTex->tex);
+      boss.placeEnemy(0, 1.625, -4.85);
+      boss.xMove = .0005;
 
-            if (rand()%1 == 1) enms[i].xMove *= -1;
-            enms[i].yMove = -0.0005;
-          }
-    snds->engine->stopAllSounds();
-    snds->playMusic("sounds/boss-music.mp3");
-    doneLoading = true;
+      snds->engine->stopAllSounds();
+      snds->playMusic("sounds/boss-music.mp3");
+      doneLoading = true;
     }
   return true;
 
@@ -245,8 +244,6 @@ GLint _glScene::drawScene()
       {
         enms[i].initEnemy(enmsTex->tex);
         enms[i].placeRandomly();
-        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,(float)(rand()/float(RAND_MAX))*3+2,-2.5);
-        //enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
         enms[i].xMove = (float) (rand()/float(RAND_MAX))/100;
         enms[i].xSize = enms[i].ySize = 0.2;
 
@@ -283,21 +280,13 @@ GLint _glScene::drawScene()
       ply->drawPlayer();
       glPopMatrix();
 
+      //Handles boss actions
+      if (level3) boss.actions();
+
       //Handles Enemy Actions
       for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++) {
-        if(enms[i].xPos<=-1.75)
-        {
-          enms[i].action =0;
-          enms[i].xMove *= -1;
-          enms[i].rotateZ = 0;
-        }
-        else if (enms[i].xPos>1.75)
-        {
-          enms[i].action = 1;
-          enms[i].xMove *= -1;
-        }
-        enms[i].xPos += enms[i].xMove;
-        enms[i].yPos += enms[i].yMove;
+        //Enemy movement
+        enms[i].actions();
 
         //Game over check, prints in console, resets y position
         if(enms[i].yPos <= -.70 && enms[i].xPos>=-1.75 && enms[i].xPos<=1.75) {
@@ -306,9 +295,8 @@ GLint _glScene::drawScene()
           state = isOver;
           enms[i].yPos = 1.0;
         }
-        enms[i].actions();
 
-        //Handles Collision
+        //Handles Collision for enemies
         for (int j = 0; j < ply->bullets.size();j++)
         {
           if(ply->bullets.at(j)->yPos >= enms[i].yPos)
@@ -317,30 +305,86 @@ GLint _glScene::drawScene()
             {
               //Enemy killed
               //enms[i].placeRandomly();
-              enms[i].kill();
-              kills++;
+              enms[i].health -= 1;
+              if (enms[i].health <= 0){
+                enms[i].kill();
+                kills++;
+              }
             }
           }
         }
-        // win and go to next level if enemies are dead
-        if (level1 && kills >= sizeof(enms)/sizeof(enms[0])) {
-            level2 = true;
-            level1 = false;
-            doneLoading = false;
-            kills = 0;
-        }
-        if (level2 && kills >= sizeof(enms)/sizeof(enms[0])) {
-            level3 = true;
-            level2 = false;
-            doneLoading = false;
-            kills = 0;
-        }
-        if (level3 && kills >= sizeof(enms)/sizeof(enms[0])) {
-            state = isWin;
-            level3 = false;
-            kills = 0;
-        }
       }
+      //End of enemy actions
+
+      // win and go to next level if enemies are dead
+      if (level1 && kills >= sizeof(enms)/sizeof(enms[0])) {
+          level2 = true;
+          level1 = false;
+          doneLoading = false;
+          kills = 0;
+      }
+      if (level2 && kills >= sizeof(enms)/sizeof(enms[0])) {
+          level3 = true;
+          level2 = false;
+          doneLoading = false;
+          kills = 0;
+      }
+      if (level3) {
+          //Every 2 cycles of boss movement, redeploy smaller enemies
+          if((boss.cycles%2 == 0) && (!boss.redeployed)){
+            for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
+            {
+               //Initialization of enemies
+               enms[i].initEnemy(enmsTex->tex);
+               enms[i].placeRandomly();
+               enms[i].xMove = (rand()%4*.001) + .001;
+               enms[i].xSize = enms[i].ySize = 0.2;
+
+               //Randomize starting movement direction (left/right)
+               if (rand()%1 == 1) enms[i].xMove *= -1;
+               enms[i].yMove = -0.0005;
+            }
+            boss.redeployed = true;
+          }
+
+          //Player->Boss collision detection
+          for (int i = 0; i < ply->bullets.size(); i++){
+              if (ply->bullets.at(i)->yPos >= (boss.yPos*.8)){
+                if((hit->isLinearCollision(ply->bullets.at(i)->xPos,boss.xPos)) && (hit->isLinearCollision(ply->bullets.at(i)->yPos,boss.yPos))){
+                  //Weaken boss
+                  boss.health -=1;
+                  cout << "Boss hit! HP left: " << boss.health << endl;
+                  //Move bullet offscreen, will be removed in player.h: actions()
+                  ply->bullets.at(i)->yPos = 100;
+                }
+              }
+          }
+
+          //Check to see if the boss has been killed
+          if(boss.isDead()){
+              state = isWin;
+              level3 = false;
+              kills = 0;
+          }
+
+          //Boss-Player collision detection
+          for (int i = 0; i < boss.bullets.size(); i++){
+              if(boss.bullets.at(i)->yPos <= (ply->yPos*.8)+0.25){
+                if((hit->isLinearCollision(boss.bullets.at(i)->xPos,ply->xPos)) && (hit->isLinearCollision(boss.bullets.at(i)->yPos,ply->yPos))){
+                    //Decrement player health, check for death
+                    ply->health--;
+                    cout << "The player has lost health! New HP: " << ply->health << endl;
+                    if(ply->health <= 0){
+                      cout << "Player got rocked by the boss!" << endl;
+                      state = isOver;
+                    }
+                    //Move bullet offscreen, will be removed in boss.h: actions()
+                    boss.bullets.at(i)->yPos = 100;
+                }
+              }
+          }
+      }
+      //End of isPlay Case
     }
   }
 }

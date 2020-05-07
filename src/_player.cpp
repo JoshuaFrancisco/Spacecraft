@@ -23,6 +23,7 @@ _player::_player()
     movingLeft = movingRight = movingUp = movingDown = false;
     action =-1;
     frames = 1;
+    health = 5;
 }
 
 _player::~_player()
@@ -71,7 +72,8 @@ void _player::actions()
     if(movingLeft && xPos > -3) xPos -= xMove;
     if(movingRight && xPos < 3) xPos += xMove;
     if(movingDown && yPos > -2) yPos -= yMove;
-    if(movingUp && yPos < 2) yPos += yMove;
+    if(movingUp && yPos < 1.5) yPos += yMove;
+
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {

@@ -24,6 +24,8 @@ _enms::_enms()
     theta =30*(PI/180);
     v=35;
     t=0;
+
+    health = 1;
 }
 
 _enms::~_enms()
@@ -80,6 +82,18 @@ void _enms::initEnemy(GLuint tex)
 
 void _enms::actions()
 {
+    if(xPos<=-1.75)
+    {
+      action =0;
+      xMove *= -1;
+    }
+    else if (xPos>1.75)
+    {
+      action = 1;
+      xMove *= -1;
+    }
+    xPos += xMove;
+    yPos += yMove;
     drawEnemy();
 }
 

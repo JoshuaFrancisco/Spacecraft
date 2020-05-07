@@ -9,6 +9,7 @@
 #include <_parallax.h>
 #include <_player.h>
 #include <_enms.h>
+#include <_enemyBoss.h>
 #include <_checkCollision.h>
 #include <_sound.h>
 #include <menu.h>
@@ -68,7 +69,7 @@ class _glScene
         //Enemies
         _enms enms[15];
         _enms enms2[10];
-        _enms boss[1];
+        _enemyBoss boss;
 
     protected:
     private:
