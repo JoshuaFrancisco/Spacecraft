@@ -292,8 +292,6 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 		case WM_SIZE:								// Resize The OpenGL Window
 		{
                                                     // LoWord=Width, HiWord=Height
-			//Scene->ReSizeGLScene(GetSystemMetrics(SM_CXSCREEN),HIWORD(lParam));
-
 			Scene->reSizeScene(LOWORD(lParam),HIWORD(lParam));
 			return 0;								// Jump Back
 		}
@@ -309,7 +307,6 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
              Scene->winMsg(hWnd,uMsg,wParam,lParam);
             break;
 	}
-   //
 	// Pass All Unhandled Messages To DefWindowProc
 	return DefWindowProc(hWnd,uMsg,wParam,lParam);
 }
@@ -337,47 +334,6 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 	{
 		return 0;									// Quit If Window Was Not Created
 	}
-
-	/*while(!done)									// Loop That Runs While done=FALSE
-	{
-		if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))	// Is There A Message Waiting?
-		{
-			if (msg.message==WM_QUIT)				// Have We Received A Quit Message?
-			{
-				done=TRUE;							// If So done=TRUE
-			}
-			else									// If Not, Deal With Window Messages
-			{
-				TranslateMessage(&msg);				// Translate The Message
-				DispatchMessage(&msg);				// Dispatch The Message
-			}
-		}
-		else										// If There Are No Messages
-		{
-			// Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
-			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
-			{
-				done=TRUE;							// ESC or DrawGLScene Signalled A Quit
-			}
-			else									// Not Time To Quit, Update Screen
-			{
-			    Scene->drawScene();
-				SwapBuffers(hDC);					// Swap Buffers (Double Buffering)
-			}
-
-			if (keys[VK_F1])						// Is F1 Being Pressed?
-			{
-				keys[VK_F1]=FALSE;					// If So Make Key FALSE
-				KillGLWindow();						// Kill Our Current Window
-				fullscreen=!fullscreen;				// Toggle Fullscreen / Windowed Mode
-				// Recreate Our OpenGL Window
-				if (!CreateGLWindow("Game Engine Lesson 01",fullscreenWidth,fullscreenHeight,256,fullscreen))
-				{
-					return 0;						// Quit If Window Was Not Created
-				}
-			}
-		}
-	}*/
 
 		while(!done)									// Loop That Runs While done=FALSE
 	{
@@ -417,16 +373,9 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 		else										// If There Are No Messages
 		{
 			// Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
-			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
+			if (!active  || keys[VK_ESCAPE]) 	// Active?  Was There A Quit Received?
 			{
-			    //make message window that exits
-			    //int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
-			    //if (exitMessage == IDOK){
-                    done=TRUE;							// ESC or DrawGLScene Signalled A Quit
-			    //}
-			    /*else if (exitMessage == IDCANCEL){
-                   break; //BUG: no/cancel remakes window
-			    }*/
+            done=TRUE;							// ESC or DrawGLScene Signalled A Quit
 			}
 			else									// Not Time To Quit, Update Screen
 			{

@@ -38,8 +38,6 @@ GLint _glScene::initGL()
       ply->initPlayer("images/ship-02.png");
       ply->xPos = -0.5; //changes x position
       ply->yPos = -1.5; //change y position
-      //ply->zPos = -2.0; //change z position, changes the size of player
-      //glEnable(GL_COLOR_MATERIAL
     for (int i = 0; i <sizeof(enms)/sizeof(enms[0]); i++)
       {
          //Initialization of enemies
@@ -290,8 +288,6 @@ GLint _glScene::drawScene()
 
         //Game over check, prints in console, resets y position
         if(enms[i].yPos <= -.70 && enms[i].xPos>=-1.75 && enms[i].xPos<=1.75) {
-          /* code */
-          cout << "Game Over!" << endl;
           state = isOver;
           enms[i].yPos = 1.0;
         }
@@ -304,7 +300,6 @@ GLint _glScene::drawScene()
             if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) && (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
             {
               //Enemy killed
-              //enms[i].placeRandomly();
               enms[i].health -= 1;
               if (enms[i].health <= 0){
                 enms[i].kill();
@@ -378,13 +373,11 @@ GLint _glScene::drawScene()
                       cout << "Player got rocked by the boss!" << endl;
                       state = isOver;
                     }
-                    //Move bullet offscreen, will be removed in boss.h: actions()
                     boss.bullets.at(i)->yPos = 100;
                 }
               }
           }
       }
-      //End of isPlay Case
     }
   }
 }

@@ -1,4 +1,3 @@
-
 #ifndef _GLSCENE_H
 #define _GLSCENE_H
 
