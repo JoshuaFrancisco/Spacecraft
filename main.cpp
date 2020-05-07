@@ -17,7 +17,6 @@
 
 using namespace std;
 
-
 HDC			hDC=NULL;		// Private GDI Device Context
 HGLRC		hRC=NULL;		// Permanent Rendering Context
 HWND		hWnd=NULL;		// Holds Our Window Handle
@@ -419,10 +418,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			// Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
 			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
 			{
+					if (Scene->state == Scene->isPlay){
+						Scene->state = Scene->isPaused;
+						keys[VK_ESCAPE] = FALSE;
+					}
+					else if (Scene->state == Scene->isPaused) {
+                            Scene->state = Scene->isPlay;
+                            keys[VK_ESCAPE] = FALSE;
+					}
 			    //make message window that exits
 			    //int exitMessage = MessageBox(NULL,"Would You Like To Exit?", "Exit?",MB_OKCANCEL|keys[VK_RETURN]|MB_ICONQUESTION);
 			    //if (exitMessage == IDOK){
-                    done=TRUE;							// ESC or DrawGLScene Signalled A Quit
+          else          done=TRUE;							// ESC or DrawGLScene Signalled A Quit
 			    //}
 			    /*else if (exitMessage == IDCANCEL){
                    break; //BUG: no/cancel remakes window
@@ -460,6 +467,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			    }
 			    if(keys[0x4E] && Scene->state == Scene->isMenu){ //press N and in menu
                     keys[0x4E]=FALSE;
+										Scene->canContinue = false;
                     Scene->initGL();
                     Scene->state = Scene->isPlay; //go to play game
 			    }
@@ -476,6 +484,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
                     Scene->state = Scene->isCredits;
                     //break; //go to exit
                 }
+								if(keys[0x4D] && Scene->state == Scene->isPaused){
+										Scene->state = Scene->isMenu;
+										Scene->level1 = true;
+										Scene->level2 = false;
+										Scene->level3 = false;
+										Scene->canContinue = true;
+										//Scene->initGL();
+								}
+								if(keys[0x52] && Scene->state == Scene->isMenu && Scene->canContinue){
+										keys[0x52] = FALSE;
+										Scene->state = Scene->isPlay;
+								}
                 if(Scene->doneLoading)
 			    {
 			    Scene->drawScene();
@@ -501,5 +521,3 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 	KillGLWindow();									// Kill The Window
 	return (msg.wParam);							// Exit The Program
 }
-
-

@@ -33,7 +33,7 @@ class _glScene
         int kills = 0;
 
         //Game states identify which screen the game is in
-        enum gameState{isSplash = 0, isMenu = 1, isPlay = 2, isHelp = 3, isOver = 4, isCredits = 5, isWin = 6};
+        enum gameState{isSplash = 0, isMenu, isPlay, isHelp, isOver, isCredits, isWin, isPaused};
         gameState state = isSplash; //initialize state to first cut scene
 
         //WPARAM wParm;
@@ -57,9 +57,10 @@ class _glScene
         menu *over = new menu();
         menu *cred = new menu();
         menu *win = new menu();
+        menu *pause = new menu();
 
         //Cut scenes
-        bool intro1 = true, intro2 = false, intro3 = false, spl = false;
+        bool intro1 = true, intro2 = false, intro3 = false, spl = false, canContinue = false;
 
         //Enemy texture loaders
         _textureLoader *enmsTex = new _textureLoader();

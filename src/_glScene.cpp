@@ -30,6 +30,10 @@ GLint _glScene::initGL()
 
   _glLight Light(GL_LIGHT0);
 
+  //Reset player's bullets
+  ply->bullets.clear();
+  ply->bulletCount = 0;
+
   if (level1)
     {
       myModel->initModel();
@@ -385,7 +389,18 @@ GLint _glScene::drawScene()
           }
       }
       //End of isPlay Case
+      break;
     }
+    case isPaused:
+      pause->menuInit("images/help.png"); //load image for menu, 1920 x 1080 image
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
+      glLoadIdentity();									// Reset The Current Modelview Matrix
+      glPushMatrix();
+      glTranslated(0,0,-4.0); //move image back
+      glScalef(2,2,1); //scale image
+      pause->drawMenu(screenWidth, screenHeight); //draw main menu
+      glPopMatrix();
+      break;
   }
 }
 
