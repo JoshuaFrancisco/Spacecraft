@@ -23,7 +23,6 @@ _projectile::~_projectile()
 
 void _projectile::init(char *fileName)
 {
-   // T->TextureBinder();
    glEnable(GL_BLEND);
    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     Tt->loadTexture(fileName);
@@ -63,7 +62,5 @@ void _projectile::move(){
 }
 
 bool _projectile::expired(){
-  //if (yPos >= 1.9 || yPos <= -5 || xPos <= -5 || xPos >= 5) return false;
   return yPos >= 1.9;
-  //return true;
 }
