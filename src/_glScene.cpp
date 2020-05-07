@@ -315,25 +315,27 @@ GLint _glScene::drawScene()
           {
             if((hit->isLinearCollision(ply->bullets.at(j)->xPos,enms[i].xPos)) && (hit->isLinearCollision(ply->bullets.at(j)->yPos,enms[i].yPos)))
             {
-              enms[i].placeRandomly();
+              //Enemy killed
+              //enms[i].placeRandomly();
+              enms[i].kill();
               kills++;
             }
           }
         }
-        // win and go to next level
-        if (level1 && kills == 5) {
+        // win and go to next level if enemies are dead
+        if (level1 && kills >= sizeof(enms)/sizeof(enms[0])) {
             level2 = true;
             level1 = false;
             doneLoading = false;
             kills = 0;
         }
-        if (level2 && kills == 5) {
+        if (level2 && kills >= sizeof(enms)/sizeof(enms[0])) {
             level3 = true;
             level2 = false;
             doneLoading = false;
             kills = 0;
         }
-        if (level3 && kills == 5) {
+        if (level3 && kills >= sizeof(enms)/sizeof(enms[0])) {
             state = isWin;
             level3 = false;
             kills = 0;

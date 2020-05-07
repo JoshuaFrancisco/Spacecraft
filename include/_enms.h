@@ -20,6 +20,7 @@ class _enms
         void placeRandomly();
         void initEnemy(GLuint);
         void actions(); //movements and actions you want to add
+        void kill();
 
         bool isEnemyLive; //Status of the enemy
         GLuint EnemyTex; //Texture handler

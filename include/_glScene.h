@@ -66,7 +66,7 @@ class _glScene
         _textureLoader *bossTex = new _textureLoader();
 
         //Enemies
-        _enms enms[5];
+        _enms enms[15];
         _enms enms2[10];
         _enms boss[1];
 
