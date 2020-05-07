@@ -8,9 +8,9 @@ _glScene::_glScene()
   screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
   doneLoading = false;
-  level1 = false;
+  level1 = true;
   level2 = false;
-  level3 = true;
+  level3 = false;
 }
 
 _glScene::~_glScene()
