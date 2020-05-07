@@ -386,7 +386,7 @@ GLint _glScene::drawScene()
       break;
     }
     case isPaused:
-      pause->menuInit("images/help.png"); //load image for menu, 1920 x 1080 image
+      pause->menuInit("images/pause.png"); //load image for menu, 1920 x 1080 image
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
       glLoadIdentity();									// Reset The Current Modelview Matrix
       glPushMatrix();
