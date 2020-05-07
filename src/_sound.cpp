@@ -28,8 +28,9 @@ void _sound::pauseSound(char* File)
 
 int _sound::initSounds()
 {
-    if(!engine){cout<< "The Sound Engine did not startup\n";
-            return 0;
+    if(!engine){
+      cout<< "The Sound Engine did not startup\n";
+      return 0;
     }
     return 1;
 }

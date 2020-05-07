@@ -2,7 +2,6 @@
 #include <_textureLoader.h>
 
 _textureLoader *mTex = new _textureLoader();
-
 //similar to parallax but without scroll
 
 menu::menu()

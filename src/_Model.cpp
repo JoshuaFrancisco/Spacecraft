@@ -6,7 +6,6 @@ _textureLoader *tex = new _textureLoader();
 _Model::_Model()
 {
     //ctor
-
     rotateX=0.0;
     rotateY=0.0;
     rotateZ=0.0;
@@ -16,8 +15,6 @@ _Model::_Model()
     posZ=0.0;
 
     scale=0.5;
-
-
 }
 
 void _Model::initModel()
@@ -35,16 +32,12 @@ void _Model::drawModel()
 {
     tex->TextureBinder();
     glColor3f(1.0,0.5,0.2);
+
     glPushMatrix();
     glScaled(scale,scale,scale);
     glTranslated(posX,posY,posZ);
     glRotated(rotateX,1,0,0);
     glRotated(rotateY,0,1,0);
     glRotated(rotateZ,0,0,1);
-
-    //glutSolidTeapot(1.5);
-
-   // glutSolidTorus(0.5,1.5,40,40);
-
     glPopMatrix();
 }

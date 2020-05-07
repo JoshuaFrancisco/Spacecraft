@@ -48,6 +48,7 @@
 		</Linker>
 		<Unit filename="include/_Model.h" />
 		<Unit filename="include/_checkCollision.h" />
+		<Unit filename="include/_enemyBoss.h" />
 		<Unit filename="include/_enms.h" />
 		<Unit filename="include/_glLight.h" />
 		<Unit filename="include/_glScene.h" />
@@ -62,6 +63,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/_Model.cpp" />
 		<Unit filename="src/_checkCollision.cpp" />
+		<Unit filename="src/_enemyBoss.cpp" />
 		<Unit filename="src/_enms.cpp" />
 		<Unit filename="src/_glLight.cpp" />
 		<Unit filename="src/_glScene.cpp" />

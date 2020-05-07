@@ -24,6 +24,8 @@ _enms::_enms()
     theta =30*(PI/180);
     v=35;
     t=0;
+
+    health = 1;
 }
 
 _enms::~_enms()
@@ -65,9 +67,8 @@ void _enms::placeEnemy(float x, float y , float z)
 
 void _enms::placeRandomly()
 {
-    //xPos = rand()/float(RAND_MAX)*5-2.5;
     xPos = (rand()%20*.1)-0.5;
-    yPos = (rand()%25 * .1)+1.5;
+    yPos = (rand()%25*.35)+1.5;
     zPos = -4.95;
 }
 
@@ -80,60 +81,23 @@ void _enms::initEnemy(GLuint tex)
 
 void _enms::actions()
 {
-    drawEnemy();
-    /*
-    switch(action) {
-    case 0:
-        if (TE->getTicks()>60) {
-            xMin+=1.0/frames;
-            xMax+=1.0/frames;
-            yMin = 0.5;
-            yMax = 1.0;
-            if(xMax>=1){xMin=0;xMax=1.0/frames;}
-            TE->reset();
-        }
-        drawEnemy();
-        break;
-    case 1:
-        if (TE->getTicks()>60) {
-            xMin+=1.0/frames;
-            xMax+=1.0/frames;
-            yMin = 0.0;
-            yMax = 0.5;
-            if(xMax>=1){xMin=0;xMax=1.0/frames;}
-            TE->reset();
-        }
-        drawEnemy();
-        break;
-    //when the player attacks left enemies launch and rotate
-    case 2:
-        if (TE->getTicks()>60) {
-            xMin =0.0/frames;
-            xMax =1.0/frames;
-            yMin =0.0;
-            yMax =0.5;
-            xMove = -(float)(rand()/float(RAND_MAX))/1000; //handles the random movement
-            //rotateZ += (float)(rand()/float(RAND_MAX))*100; //rotates the enemies while flying
-            xPos -= (v*t*cos(theta))/1500;
-            //yPos += (v*t*sin(theta)-0.5*gravity*t*t)/600; //launches the enemies
-            if(yPos>-0.25)t+=0.3;
-            else {t=0; yPos =-0.2;}
-            TE->reset();
-        }
-        drawEnemy();
-        break;
-    case 3:
-        if (TE->getTicks()>60) {
-            xMin =0.0/frames;
-            xMax =1.0/frames;
-            yMin =0.0;
-            yMax =0.5;
-            xMove = (float)(rand()/float(RAND_MAX))/50;
-            //rotateZ -= (float)(rand()/float(RAND_MAX))*100;
-            TE->reset();
-        }
-        drawEnemy();
-        break;
+    if(xPos<=-1.75)
+    {
+      action =0;
+      xMove *= -1;
     }
-    */
+    else if (xPos>1.75)
+    {
+      action = 1;
+      xMove *= -1;
+    }
+    xPos += xMove;
+    yPos += yMove;
+    drawEnemy();
+}
+
+void _enms::kill()
+{
+    xPos = yPos = 100;
+    xMove = yMove = 0;
 }

@@ -23,6 +23,7 @@ _player::_player()
     movingLeft = movingRight = movingUp = movingDown = false;
     action =-1;
     frames = 1;
+    health = 5;
 }
 
 _player::~_player()
@@ -38,7 +39,6 @@ void _player::placePlayer()
 void _player::drawPlayer()
 {
     glColor3f(1.0,0.0,0.0);
-   // glPushMatrix();  //ouping the Quad
     T->TextureBinder();
 
     glTranslatef(xPos,yPos,zPos);
@@ -57,15 +57,10 @@ void _player::drawPlayer()
       glTexCoord2f(xMin, yMin);
       glVertex3f(verticies[3].x, verticies[3].y,verticies[3].z);
     glEnd();
-  //  glPopMatrix();
-
 }
 
 void _player::initPlayer(char *fileName)
 {
-   // T->TextureBinder();
-
-
    glEnable(GL_BLEND);
    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     T->loadTexture(fileName);
@@ -77,7 +72,8 @@ void _player::actions()
     if(movingLeft && xPos > -3) xPos -= xMove;
     if(movingRight && xPos < 3) xPos += xMove;
     if(movingDown && yPos > -2) yPos -= yMove;
-    if(movingUp && yPos < 2) yPos += yMove;
+    if(movingUp && yPos < 1.5) yPos += yMove;
+
     //Manages bullets
     for (int i = 0; i < bullets.size(); i++){
       if (!bullets.at(i)->expired()) {
@@ -101,11 +97,6 @@ void _player::shoot(){
   //The following numbers are relative to sprite and player location on screen
   bullet->xPos = (xPos*.8) + 0.4;
   bullet->yPos = (yPos*.8) + 0.5;
-  bullet->maxDistance = 3.25; // How far the bullet travels before disapear
-  //if (direction == "right") bullet->xMove = 0.01;
-  //else if (direction == "left") bullet->xMove = -0.01;
-  //else if (direction == "up") bullet->yMove = 0.003;
-  //else if (direction == "down") bullet->yMove = -0.01;
   if (direction == "right") bullet->xMove = bullet->speed;
   else if (direction == "left") bullet->xMove -= bullet->speed;
   else if (direction == "up") bullet->yMove = bullet->speed;

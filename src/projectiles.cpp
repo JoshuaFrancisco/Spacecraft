@@ -12,7 +12,8 @@ _projectile::_projectile()
     xPos = yPos = xMove = yMove = xMin = yMin = 0.0;
     zPos = -4.85;
     xMax = yMax = 1.0;
-    distTraveled = maxDistance = 0;
+    speed = .01;
+    isHostile = false;
 }
 
 _projectile::~_projectile()
@@ -22,7 +23,6 @@ _projectile::~_projectile()
 
 void _projectile::init(char *fileName)
 {
-   // T->TextureBinder();
    glEnable(GL_BLEND);
    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     Tt->loadTexture(fileName);
@@ -54,11 +54,13 @@ void _projectile::draw(){
 }
 
 void _projectile::move(){
-  distTraveled += (xMove + yMove);
-  //xPos += speed;
-  yPos += speed;
+  if (isHostile){
+    xPos += xMove;
+    yPos += yMove;
+  }
+  else yPos += speed;
 }
 
 bool _projectile::expired(){
-  return distTraveled >= maxDistance;
+  return yPos >= 1.9;
 }
